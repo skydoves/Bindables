@@ -210,7 +210,7 @@ class MainViewModel : BindingViewModel() {
   }
 }
 ```
-Whenever we call `notifyPropertyChanged(::getFetchedData)`, `getFetchedString()` will be called and the UI layer will be get the updated data. 
+Whenever we call `notifyPropertyChanged(::getFetchedData)`, `getFetchedString()` will be called and the UI layer will get the updated data. 
 ```xml
 android:text="@{viewModel.fetchedData}"
 ```
