@@ -158,7 +158,7 @@ var message: String? = null
   set(value) {
     field = value
     // .. do something.. //
-    notifyPropertyChanged(::successMessage) // notify data changes to UI layers. (DataBinding)
+    notifyPropertyChanged(::message) // notify data changes to UI layers. (DataBinding)
   }
 ```
 
