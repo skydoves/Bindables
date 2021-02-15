@@ -193,7 +193,6 @@ binding.editText.addTextChangedListener {
 }
 ```
 
-
 ### Binding functions
 We can impement bindable functions using `@Bindable` annotation and `notifyPropertyChanged()` in the `BindingViewModel`. And the `@Bindable` annotated method's name must start with `get`.
 
@@ -206,7 +205,7 @@ class MainViewModel : BindingViewModel() {
 
   fun fetchDataAndNotifyChaged() {
     usecase.fetchDataFromNetowrk()
-    notifyPropertyChanged(::getFetchedData)
+    notifyPropertyChanged(::getFetchedString)
   }
 }
 ```
