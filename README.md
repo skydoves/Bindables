@@ -21,7 +21,7 @@ You can reference the good use cases of this library in the below repositories.
 - [MarvelHeroes](https://github.com/skydoves/marvelheroes) - ❤️ A sample Marvel heroes application based on MVVM (ViewModel, Coroutines, LiveData, Room, Repository, Koin)  architecture.
 
 ## Download
-[![Maven Central](https://img.shields.io/maven-central/v/com.github.skydoves/bindables.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.skydoves%22%20AND%20a:%22bindables%22)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.skydoves/bindables.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.skydoves%22%20AND%20a:%22bindables%22) [![Jitpack](https://jitpack.io/v/skydoves/bindables.svg)](https://jitpack.io/#skydoves/bindables)
 
 ### Gradle
 Add below codes to your **root** `build.gradle` file (not your module build.gradle file).
