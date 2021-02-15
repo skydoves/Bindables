@@ -14,6 +14,10 @@ This library provides base classes for DataBinding (BindingActivity, BindingFrag
 and support ways in which notifying data changes without observable fields and LiveData.
 </p>
 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/24237865/107942568-c1c82e80-6fce-11eb-8ab3-f8e9847a57fe.png" width="665" height="424"/>
+</p>
+
 ## UseCase
 You can reference the good use cases of this library in the below repositories.
 - [Pokedex](https://github.com/skydoves/pokedex) - 🗡️ Android Pokedex using Hilt, Motion, Coroutines, Flow, Jetpack (Room, ViewModel, LiveData) based on MVVM architecture.
