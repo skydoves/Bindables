@@ -277,7 +277,7 @@ class PosterAdapter : BindingRecyclerViewAdapter<PosterAdapter.PosterViewHolder>
 ```
 In the below example, we can make the `placeholder` being gone when the adapter's item list is empty or loading data.
 
-```kotlin
+```xml
 <androidx.appcompat.widget.AppCompatTextView
     android:id="@+id/placeholder"
     android:layout_width="match_parent"
