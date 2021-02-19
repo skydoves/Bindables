@@ -23,14 +23,17 @@ import android.net.Uri
 import android.util.Log
 
 /**
- * A binding initialization provider for binding Bindable properties when an application is started.
+ * @author skydoves (Jaewoong Eum)
+ *
+ * A binding initialization provider for binding `@Bindable` properties when an application is started.
+ * This initialization provider will be registered on the application as a content provider.
  */
 class BindingInitProvider : ContentProvider() {
 
   override fun onCreate(): Boolean {
     val fieldSize = BindingManager.bind(BR::class)
-    if (fieldSize <= 1) {
-      Log.i(TAG, "BindingManager initialization successful, but empty bindable fields.")
+    if (fieldSize <= MIN_FIELD_SIZE) {
+      Log.i(TAG, "BindingManager initialization successful, but empty `@Bindable` fields.")
     } else {
       Log.i(TAG, "BindingManager initialization successful.")
     }
@@ -45,5 +48,6 @@ class BindingInitProvider : ContentProvider() {
 
   companion object {
     private const val TAG = "BindingInitProvider"
+    private const val MIN_FIELD_SIZE = 1
   }
 }
