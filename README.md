@@ -3,6 +3,7 @@
 <p align="center">
   <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
   <a href="https://android-arsenal.com/api?level=16"><img alt="API" src="https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat"/></a>
+  <a href="https://github.com/skydoves/Bindables/actions"><img alt="Build Status" src="https://github.com/skydoves/Bindables/workflows/Android%20CI/badge.svg"/></a> 
   <a href="https://github.com/skydoves"><img alt="Profile" src="https://skydoves.github.io/badges/skydoves.svg"/></a>
   <a href="https://skydoves.github.io/libraries/bindables/html/bindables/com.skydoves.bindables/index.html"><img alt="Dokka" src="https://skydoves.github.io/badges/javadoc-bindables.svg"/></a>
 </p>
@@ -13,14 +14,19 @@ This library provides base classes for DataBinding (BindingActivity, BindingFrag
 and support ways in which notifying data changes without observable fields and LiveData.
 </p>
 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/24237865/107942568-c1c82e80-6fce-11eb-8ab3-f8e9847a57fe.png" width="665" height="424"/>
+</p>
+
 ## UseCase
 You can reference the good use cases of this library in the below repositories.
 - [Pokedex](https://github.com/skydoves/pokedex) - 🗡️ Android Pokedex using Hilt, Motion, Coroutines, Flow, Jetpack (Room, ViewModel, LiveData) based on MVVM architecture.
 - [DisneyMotions](https://github.com/skydoves/DisneyMotions) - 🦁 A Disney app using transformation motions based on MVVM (ViewModel, Coroutines, LiveData, Room, Repository, Koin) architecture.
 - [MarvelHeroes](https://github.com/skydoves/marvelheroes) - ❤️ A sample Marvel heroes application based on MVVM (ViewModel, Coroutines, LiveData, Room, Repository, Koin)  architecture.
+- [TheMovies2](https://github.com/skydoves/TheMovies2) - 🎬 A demo project using The Movie DB based on Kotlin MVVM architecture and material design & animations.
 
 ## Download
-[![Maven Central](https://img.shields.io/maven-central/v/com.github.skydoves/bindables.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.skydoves%22%20AND%20a:%22bindables%22)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.skydoves/bindables.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.skydoves%22%20AND%20a:%22bindables%22) [![Jitpack](https://jitpack.io/v/skydoves/bindables.svg)](https://jitpack.io/#skydoves/bindables)
 
 ### Gradle
 Add below codes to your **root** `build.gradle` file (not your module build.gradle file).
@@ -186,7 +192,6 @@ binding.editText.addTextChangedListener {
 }
 ```
 
-
 ### Binding functions
 We can impement bindable functions using `@Bindable` annotation and `notifyPropertyChanged()` in the `BindingViewModel`. And the `@Bindable` annotated method's name must start with `get`.
 
@@ -199,11 +204,11 @@ class MainViewModel : BindingViewModel() {
 
   fun fetchDataAndNotifyChaged() {
     usecase.fetchDataFromNetowrk()
-    notifyPropertyChanged(::getFetchedData)
+    notifyPropertyChanged(::getFetchedString)
   }
 }
 ```
-Whenever we call `notifyPropertyChanged(::getFetchedData)`, `getFetchedString()` will be called and the UI layer will be get the updated data. 
+Whenever we call `notifyPropertyChanged(::getFetchedData)`, `getFetchedString()` will be called and the UI layer will get the updated data. 
 ```xml
 android:text="@{viewModel.fetchedData}"
 ```
@@ -270,7 +275,7 @@ class PosterAdapter : BindingRecyclerViewAdapter<PosterAdapter.PosterViewHolder>
 ```
 In the below example, we can make the `placeholder` being gone when the adapter's item list is empty or loading data.
 
-```kotlin
+```xml
 <androidx.appcompat.widget.AppCompatTextView
     android:id="@+id/placeholder"
     android:layout_width="match_parent"
