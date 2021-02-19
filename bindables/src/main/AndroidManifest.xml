@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.skydoves.bindables" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.skydoves.bindables">
+
+  <application>
+    <provider
+      android:name="com.skydoves.bindables.BindingInitProvider"
+      android:authorities="${applicationId}.bindinginitprovider"
+      android:exported="false" />
+  </application>
+</manifest>
