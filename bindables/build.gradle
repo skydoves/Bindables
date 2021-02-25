@@ -47,6 +47,14 @@ kotlin {
     explicitApi()
 }
 
+dokkaHtml.configure {
+    dokkaSourceSets {
+        named("main") {
+            noAndroidSdkLink.set(false)
+        }
+    }
+}
+
 dependencies {
     implementation "com.google.android.material:material:$versions.googleMaterial"
     implementation "androidx.appcompat:appcompat:$versions.androidxAppcompat"

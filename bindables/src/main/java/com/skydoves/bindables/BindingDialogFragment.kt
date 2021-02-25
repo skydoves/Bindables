@@ -44,7 +44,7 @@ abstract class BindingDialogFragment<T : ViewDataBinding> constructor(
   protected var bindingComponent: DataBindingComponent? = DataBindingUtil.getDefaultComponent()
 
   /** A backing field for providing an immutable [binding] property.  */
-  private lateinit var _binding: T
+  private var _binding: T? = null
 
   /**
    * A data-binding property will be initialized in [onCreateView].
@@ -52,7 +52,7 @@ abstract class BindingDialogFragment<T : ViewDataBinding> constructor(
    */
   @BindingOnly
   protected val binding: T
-    get() = _binding
+    get() = _binding!!
 
   /**
    * An executable inline binding function that receives a binding receiver in lambda.
@@ -74,6 +74,14 @@ abstract class BindingDialogFragment<T : ViewDataBinding> constructor(
     savedInstanceState: Bundle?
   ): View {
     _binding = DataBindingUtil.inflate(inflater, contentLayoutId, container, false, bindingComponent)
-    return _binding.root
+    return binding.root
+  }
+
+  /**
+   * Destroys the [_binding] backing property for preventing leaking the [ViewDataBinding] that references the Context.
+   */
+  override fun onDestroyView() {
+    super.onDestroyView()
+    _binding = null
   }
 }
