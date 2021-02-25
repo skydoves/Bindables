@@ -54,8 +54,6 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:$versions.glideVersion"
 
     implementation "com.google.dagger:hilt-android:$versions.hiltCoreVersion"
-    implementation "androidx.hilt:hilt-common:$versions.hiltVersion"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$versions.hiltVersion"
     kapt "com.google.dagger:hilt-compiler:$versions.hiltCoreVersion"
     kapt "androidx.hilt:hilt-compiler:$versions.hiltVersion"
 
