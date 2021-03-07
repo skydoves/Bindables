@@ -91,6 +91,18 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
 }
 ```
 
+### Extending BindingActivity
+If you want to extend `BindingActivity` for designing your own base class, you can extend like the below.
+
+```kotlin
+abstract class BaseBindingActivity<T : ViewDataBinding> constructor(
+  @LayoutRes val contentLayoutId: Int
+) : BindingActivity<T>(contentLayoutId) {
+  
+  // .. //  
+}
+```
+
 ## BindingFragment
 The concept of the `BindingFragment` is not much different from the `BindingActivity`. It ensures the `binding` property to be initialized in `onCreateView`.
 
@@ -110,6 +122,18 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
       vm = viewModel
     }.root
   }
+}
+```
+
+### Extending BindingFragment
+If you want to extend `BindingFragment` for designing your own base class, you can extend like the below.
+
+```kotlin
+abstract class BaseBindingFragment<T : ViewDataBinding> constructor(
+  @LayoutRes val contentLayoutId: Int
+) : BindingFragment<T>(contentLayoutId) {
+ 
+  // .. //
 }
 ```
 
