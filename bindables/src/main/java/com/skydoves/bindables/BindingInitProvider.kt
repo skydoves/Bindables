@@ -33,7 +33,7 @@ class BindingInitProvider : ContentProvider() {
   override fun onCreate(): Boolean {
     val fieldSize = BindingManager.bind<BR>()
     if (fieldSize <= MIN_FIELD_SIZE) {
-      Log.i(TAG, "BindingManager initialization successful, but empty `@Bindable` fields.")
+      Log.i(TAG, "BindingManager initialization successful, but there is no `@Bindable` field.")
     } else {
       Log.i(TAG, "BindingManager initialization successful.")
     }
