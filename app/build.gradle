@@ -25,7 +25,7 @@ android {
     compileSdkVersion versions.compileSdk
     defaultConfig {
         applicationId "com.skydoves.bindablesdemo"
-        minSdkVersion versions.minSdk
+        minSdkVersion versions.minSdkDemo
         targetSdkVersion versions.compileSdk
         versionCode versions.versionCode
         versionName versions.versionName

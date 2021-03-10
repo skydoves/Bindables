@@ -56,6 +56,7 @@ dokkaHtml.configure {
 }
 
 dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin"
     implementation "com.google.android.material:material:$versions.googleMaterial"
     implementation "androidx.appcompat:appcompat:$versions.androidxAppcompat"
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycleVersion"
