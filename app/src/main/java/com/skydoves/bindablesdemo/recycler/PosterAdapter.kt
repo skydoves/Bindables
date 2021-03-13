@@ -28,7 +28,7 @@ class PosterAdapter : BindingListAdapter<Poster, PosterAdapter.PosterViewHolder>
 
   @get:Bindable
   val isEmpty: Boolean
-    get() = itemCount == 0
+    get() = itemCount == 0 && isSubmitted
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PosterViewHolder {
     val binding = parent.binding<ItemPosterBinding>(R.layout.item_poster)
@@ -40,7 +40,7 @@ class PosterAdapter : BindingListAdapter<Poster, PosterAdapter.PosterViewHolder>
     holder.binding.executePendingBindings()
   }
 
-  override fun submitList(list: MutableList<Poster>?) {
+  override fun submitList(list: List<Poster>?) {
     super.submitList(list)
     notifyPropertyChanged(::isEmpty)
   }

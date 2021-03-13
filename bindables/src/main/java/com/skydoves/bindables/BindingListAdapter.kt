@@ -131,7 +131,7 @@ abstract class BindingListAdapter<T, VH : RecyclerView.ViewHolder> constructor(
   /**
    * Submits a new list to be diffed, and displayed.
    */
-  override fun submitList(list: MutableList<T>?) {
+  override fun submitList(list: List<T>?) {
     super.submitList(list)
     isSubmitted = true
   }
@@ -139,7 +139,7 @@ abstract class BindingListAdapter<T, VH : RecyclerView.ViewHolder> constructor(
   /**
    * Set the new list to be displayed.
    */
-  override fun submitList(list: MutableList<T>?, commitCallback: Runnable?) {
+  override fun submitList(list: List<T>?, commitCallback: Runnable?) {
     super.submitList(list, commitCallback)
     isSubmitted = true
   }

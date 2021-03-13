@@ -28,7 +28,7 @@ class PosterCircleAdapter : BindingListAdapter<Poster, PosterCircleAdapter.Poste
 
   @get:Bindable
   val isEmpty: Boolean
-    get() = itemCount == 0
+    get() = itemCount == 0 && isSubmitted
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PosterViewHolder {
     val binding = parent.binding<ItemPosterCircleBinding>(R.layout.item_poster_circle)
@@ -40,7 +40,7 @@ class PosterCircleAdapter : BindingListAdapter<Poster, PosterCircleAdapter.Poste
     holder.binding.executePendingBindings()
   }
 
-  override fun submitList(list: MutableList<Poster>?) {
+  override fun submitList(list: List<Poster>?) {
     super.submitList(list)
     notifyPropertyChanged(::isEmpty)
   }
