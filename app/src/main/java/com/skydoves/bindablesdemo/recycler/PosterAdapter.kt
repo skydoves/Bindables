@@ -19,18 +19,16 @@ package com.skydoves.bindablesdemo.recycler
 import android.view.ViewGroup
 import androidx.databinding.Bindable
 import androidx.recyclerview.widget.RecyclerView
-import com.skydoves.bindables.BindingRecyclerViewAdapter
+import com.skydoves.bindables.BindingListAdapter
 import com.skydoves.bindables.binding
 import com.skydoves.bindablesdemo.R
 import com.skydoves.bindablesdemo.databinding.ItemPosterBinding
 
-class PosterAdapter : BindingRecyclerViewAdapter<PosterAdapter.PosterViewHolder>() {
-
-  private val items = mutableListOf<Poster>()
+class PosterAdapter : BindingListAdapter<Poster, PosterAdapter.PosterViewHolder>(PosterDiffUtil()) {
 
   @get:Bindable
   val isEmpty: Boolean
-    get() = items.isEmpty()
+    get() = itemCount == 0
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PosterViewHolder {
     val binding = parent.binding<ItemPosterBinding>(R.layout.item_poster)
@@ -38,18 +36,14 @@ class PosterAdapter : BindingRecyclerViewAdapter<PosterAdapter.PosterViewHolder>
   }
 
   override fun onBindViewHolder(holder: PosterViewHolder, position: Int) {
-    holder.binding.poster = items[position]
+    holder.binding.poster = getItem(position)
     holder.binding.executePendingBindings()
   }
 
-  fun addPosterList(list: List<Poster>) {
-    items.clear()
-    items.addAll(list)
-    notifyDataSetChanged()
+  override fun submitList(list: MutableList<Poster>?) {
+    super.submitList(list)
     notifyPropertyChanged(::isEmpty)
   }
-
-  override fun getItemCount() = items.size
 
   class PosterViewHolder(val binding: ItemPosterBinding) : RecyclerView.ViewHolder(binding.root)
 }

@@ -18,40 +18,18 @@ package com.skydoves.bindablesdemo.binding
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.skydoves.bindables.BindingListAdapter
 import com.skydoves.bindablesdemo.recycler.Poster
-import com.skydoves.bindablesdemo.recycler.PosterAdapter
-import com.skydoves.bindablesdemo.recycler.PosterCircleAdapter
-import com.skydoves.bindablesdemo.recycler.PosterLineAdapter
 import com.skydoves.whatif.whatIfNotNullAs
 import com.skydoves.whatif.whatIfNotNullOrEmpty
 
 object RecyclerViewBinding {
   @JvmStatic
-  @BindingAdapter("adapterPosterList")
-  fun bindAdapterPosterList(view: RecyclerView, posters: List<Poster>?) {
-    posters.whatIfNotNullOrEmpty { items ->
-      view.adapter.whatIfNotNullAs<PosterAdapter> { adapter ->
-        adapter.addPosterList(items)
-      }
-    }
-  }
-
-  @JvmStatic
-  @BindingAdapter("adapterPosterLineList")
-  fun bindAdapterPosterLineList(view: RecyclerView, posters: List<Poster>?) {
-    posters.whatIfNotNullOrEmpty { items ->
-      view.adapter.whatIfNotNullAs<PosterLineAdapter> { adapter ->
-        adapter.addPosterList(items)
-      }
-    }
-  }
-
-  @JvmStatic
-  @BindingAdapter("adapterPosterCircleList")
-  fun bindAdapterPosterCircleList(view: RecyclerView, posters: List<Poster>?) {
-    posters.whatIfNotNullOrEmpty { items ->
-      view.adapter.whatIfNotNullAs<PosterCircleAdapter> { adapter ->
-        adapter.addPosterList(items)
+  @BindingAdapter("submitList")
+  fun bindAdapterPosterList(view: RecyclerView, itemList: List<Poster>?) {
+    itemList.whatIfNotNullOrEmpty { items ->
+      view.adapter.whatIfNotNullAs<BindingListAdapter<Any, *>> { adapter ->
+        adapter.submitList(items)
       }
     }
   }

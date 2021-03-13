@@ -26,9 +26,9 @@
       android:clipToPadding="false"
       android:padding="4dp"
       app:adapter="@{adapter}"
-      app:adapterPosterList="@{viewModel.data}"
       app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
       app:spanCount="2"
+      app:submitList="@{viewModel.data}"
       tools:listitem="@layout/item_poster" />
 
     <androidx.appcompat.widget.AppCompatTextView

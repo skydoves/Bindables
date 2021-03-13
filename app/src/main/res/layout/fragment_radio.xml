@@ -26,13 +26,13 @@
       android:clipToPadding="false"
       android:padding="4dp"
       app:adapter="@{adapter}"
-      app:adapterPosterCircleList="@{viewModel.data}"
       app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:spanCount="2"
+      app:submitList="@{viewModel.data}"
       tools:listitem="@layout/item_poster_circle" />
 
     <androidx.appcompat.widget.AppCompatTextView
