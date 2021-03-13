@@ -16,6 +16,7 @@
 
 package com.skydoves.bindables
 
+import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
 import androidx.recyclerview.widget.DiffUtil
@@ -37,6 +38,15 @@ abstract class BindingListAdapter<T, VH : RecyclerView.ViewHolder> constructor(
 
   /** Synchronization registry lock. */
   private val lock: Any = Any()
+
+  /** A bindable property that indicates an item list has been submitted. */
+  @get:Bindable
+  var isSubmitted: Boolean = false
+    private set(value) {
+      if (field != value) {
+        field = value
+      }
+    }
 
   /** A callback registry for holding and notifying changes to bindable properties. */
   private var propertyCallbacks: PropertyChangeRegistry? = null
@@ -116,5 +126,21 @@ abstract class BindingListAdapter<T, VH : RecyclerView.ViewHolder> constructor(
       val propertyCallbacks = propertyCallbacks ?: return@lock
       propertyCallbacks.notifyCallbacks(this, 0, null)
     }
+  }
+
+  /**
+   * Submits a new list to be diffed, and displayed.
+   */
+  override fun submitList(list: MutableList<T>?) {
+    super.submitList(list)
+    isSubmitted = true
+  }
+
+  /**
+   * Set the new list to be displayed.
+   */
+  override fun submitList(list: MutableList<T>?, commitCallback: Runnable?) {
+    super.submitList(list, commitCallback)
+    isSubmitted = true
   }
 }
