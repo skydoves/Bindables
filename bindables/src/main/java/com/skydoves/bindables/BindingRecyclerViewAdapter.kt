@@ -113,4 +113,22 @@ abstract class BindingRecyclerViewAdapter<T : RecyclerView.ViewHolder> : Recycle
       propertyCallbacks.notifyCallbacks(this, BR._all, null)
     }
   }
+
+  /**
+   * Clears all binding properties from the callback registry.
+   */
+  override fun clearAllProperties() {
+    synchronized(lock) lock@{
+      val propertyCallbacks = propertyCallbacks ?: return@lock
+      propertyCallbacks.clear()
+    }
+  }
+
+  /**
+   * Clears all binding properties when adapter is detached from the recyclerView.
+   */
+  override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
+    super.onDetachedFromRecyclerView(recyclerView)
+    clearAllProperties()
+  }
 }
