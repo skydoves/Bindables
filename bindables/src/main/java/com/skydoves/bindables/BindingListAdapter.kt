@@ -45,6 +45,7 @@ abstract class BindingListAdapter<T, VH : RecyclerView.ViewHolder> constructor(
     private set(value) {
       if (field != value) {
         field = value
+        notifyPropertyChanged(::isSubmitted)
       }
     }
 
@@ -133,7 +134,7 @@ abstract class BindingListAdapter<T, VH : RecyclerView.ViewHolder> constructor(
    */
   override fun submitList(list: List<T>?) {
     super.submitList(list)
-    isSubmitted = true
+    isSubmitted = list != null
   }
 
   /**
@@ -141,6 +142,6 @@ abstract class BindingListAdapter<T, VH : RecyclerView.ViewHolder> constructor(
    */
   override fun submitList(list: List<T>?, commitCallback: Runnable?) {
     super.submitList(list, commitCallback)
-    isSubmitted = true
+    isSubmitted = list != null
   }
 }
