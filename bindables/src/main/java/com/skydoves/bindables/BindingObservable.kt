@@ -60,4 +60,9 @@ interface BindingObservable : Observable {
    * Notifies listeners that all properties of this instance have changed.
    */
   fun notifyAllPropertiesChanged()
+
+  /**
+   * Clears all binding properties from the callback registry.
+   */
+  fun clearAllProperties()
 }

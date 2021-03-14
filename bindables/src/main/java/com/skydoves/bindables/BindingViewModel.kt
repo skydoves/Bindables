@@ -115,13 +115,20 @@ abstract class BindingViewModel : ViewModel(), BindingObservable {
   }
 
   /**
-   * Clears all listeners when [ViewModel]'s lifecycle is onCleared.
+   * Clears all binding properties from the callback registry.
    */
-  override fun onCleared() {
-    super.onCleared()
+  override fun clearAllProperties() {
     synchronized(lock) lock@{
       val propertyCallbacks = propertyCallbacks ?: return@lock
       propertyCallbacks.clear()
     }
+  }
+
+  /**
+   * Clears all binding properties when [ViewModel]'s lifecycle is onCleared.
+   */
+  override fun onCleared() {
+    super.onCleared()
+    clearAllProperties()
   }
 }
