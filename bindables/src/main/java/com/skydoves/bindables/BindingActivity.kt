@@ -25,7 +25,7 @@ import androidx.databinding.ViewDataBinding
 /**
  * @author skydoves (Jaewoong Eum)
  *
- * Base class for activities that wish to bind content layout with [DataBindingUtil].
+ * Base class which extends [AppCompatActivity] for activities that wish to bind content layout with [DataBindingUtil].
  * Provides a [binding] property that extends [ViewDataBinding] from abstract information.
  * The [binding] property ensures to be initialized before being called [onCreate].
  *

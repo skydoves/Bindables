@@ -109,7 +109,7 @@ abstract class BindingModel : BindingObservable {
   override fun notifyChanged() {
     synchronized(lock) lock@{
       val propertyCallbacks = propertyCallbacks ?: return@lock
-      propertyCallbacks.notifyCallbacks(this, 0, null)
+      propertyCallbacks.notifyCallbacks(this, BR._all, null)
     }
   }
 }
