@@ -59,5 +59,5 @@ interface BindingObservable : Observable {
   /**
    * Notifies listeners that all properties of this instance have changed.
    */
-  fun notifyChanged()
+  fun notifyAllPropertiesChanged()
 }
