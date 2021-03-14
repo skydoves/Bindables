@@ -107,10 +107,10 @@ abstract class BindingViewModel : ViewModel(), BindingObservable {
   /**
    * Notifies listeners that all properties of this instance have changed.
    */
-  override fun notifyChanged() {
+  override fun notifyAllPropertiesChanged() {
     synchronized(lock) lock@{
       val propertyCallbacks = propertyCallbacks ?: return@lock
-      propertyCallbacks.notifyCallbacks(this, 0, null)
+      propertyCallbacks.notifyCallbacks(this, BR._all, null)
     }
   }
 
