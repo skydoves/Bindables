@@ -21,16 +21,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skydoves.bindables.BindingListAdapter
 import com.skydoves.bindablesdemo.recycler.Poster
 import com.skydoves.whatif.whatIfNotNullAs
-import com.skydoves.whatif.whatIfNotNullOrEmpty
 
 object RecyclerViewBinding {
   @JvmStatic
   @BindingAdapter("submitList")
   fun bindAdapterPosterList(view: RecyclerView, itemList: List<Poster>?) {
-    itemList.whatIfNotNullOrEmpty { items ->
-      view.adapter.whatIfNotNullAs<BindingListAdapter<Any, *>> { adapter ->
-        adapter.submitList(items)
-      }
+    view.adapter.whatIfNotNullAs<BindingListAdapter<Any, *>> { adapter ->
+      adapter.submitList(itemList)
     }
   }
 }

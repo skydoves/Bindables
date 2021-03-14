@@ -17,7 +17,6 @@
 package com.skydoves.bindablesdemo.recycler
 
 import android.view.ViewGroup
-import androidx.databinding.Bindable
 import androidx.recyclerview.widget.RecyclerView
 import com.skydoves.bindables.BindingListAdapter
 import com.skydoves.bindables.binding
@@ -25,10 +24,6 @@ import com.skydoves.bindablesdemo.R
 import com.skydoves.bindablesdemo.databinding.ItemPosterLineBinding
 
 class PosterLineAdapter : BindingListAdapter<Poster, PosterLineAdapter.PosterViewHolder>(PosterDiffUtil()) {
-
-  @get:Bindable
-  val isEmpty: Boolean
-    get() = itemCount == 0 && isSubmitted
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PosterViewHolder {
     val binding = parent.binding<ItemPosterLineBinding>(R.layout.item_poster_line)
@@ -38,11 +33,6 @@ class PosterLineAdapter : BindingListAdapter<Poster, PosterLineAdapter.PosterVie
   override fun onBindViewHolder(holder: PosterViewHolder, position: Int) {
     holder.binding.poster = getItem(position)
     holder.binding.executePendingBindings()
-  }
-
-  override fun submitList(list: List<Poster>?) {
-    super.submitList(list)
-    notifyPropertyChanged(::isEmpty)
   }
 
   class PosterViewHolder(val binding: ItemPosterLineBinding) :
