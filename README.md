@@ -5,7 +5,7 @@
   <a href="https://android-arsenal.com/api?level=16"><img alt="API" src="https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat"/></a>
   <a href="https://github.com/skydoves/Bindables/actions"><img alt="Build Status" src="https://github.com/skydoves/Bindables/workflows/Android%20CI/badge.svg"/></a> 
   <a href="https://github.com/skydoves"><img alt="Profile" src="https://skydoves.github.io/badges/skydoves.svg"/></a>
-  <a href="https://skydoves.github.io/libraries/bindables/html/bindables/com.skydoves.bindables/index.html"><img alt="Dokka" src="https://skydoves.github.io/badges/javadoc-bindables.svg"/></a>
+  <a href="https://skydoves.github.io/libraries/bindables/html/bindables/com.skydoves.bindables/index.html"><img implealt="Dokka" src="https://skydoves.github.io/badges/javadoc-bindables.svg"/></a>
 </p>
 
 <p align="center">
@@ -217,7 +217,7 @@ binding.editText.addTextChangedListener {
 ```
 
 ### Binding functions
-We can impement bindable functions using `@Bindable` annotation and `notifyPropertyChanged()` in the `BindingViewModel`. And the `@Bindable` annotated method's name must start with `get`.
+We can implement bindable functions using `@Bindable` annotation and `notifyPropertyChanged()` in the `BindingViewModel`. And the `@Bindable` annotated method's name must start with `get`.
 
 ```kotlin
 class MainViewModel : BindingViewModel() {
@@ -263,7 +263,7 @@ class MainViewModel : BindingViewModel() {
 ```
 
 ### Binding SavedStateHandle
-We can create a binding property from `SavedStateHandle` in the `BindingViewModel` using using `@get:Bindable` and `asBindingProperty(key: String)`. UI layers will get newly saved data from the `SavedStateHandle` and we can set the value into the `SavedStateHandle` when we just set a value to the property.
+We can create a binding property from `SavedStateHandle` in the `BindingViewModel` using `@get:Bindable` and `asBindingProperty(key: String)`. UI layers will get newly saved data from the `SavedStateHandle` and we can set the value into the `SavedStateHandle` when we just set a value to the property.
 
 ```kotlin
 @HiltViewModel
