@@ -52,7 +52,9 @@ abstract class BindingDialogFragment<T : ViewDataBinding> constructor(
    */
   @BindingOnly
   protected val binding: T
-    get() = _binding!!
+    get() = checkNotNull(_binding) {
+      "DialogFragment $this binding cannot be accessed before onCreateView() or after onDestroyView()"
+    }
 
   /**
    * An executable inline binding function that receives a binding receiver in lambda.
