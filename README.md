@@ -5,6 +5,7 @@
   <a href="https://android-arsenal.com/api?level=16"><img alt="API" src="https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat"/></a>
   <a href="https://github.com/skydoves/Bindables/actions"><img alt="Build Status" src="https://github.com/skydoves/Bindables/workflows/Android%20CI/badge.svg"/></a> 
   <a href="https://github.com/skydoves"><img alt="Profile" src="https://skydoves.github.io/badges/skydoves.svg"/></a>
+  <a href="https://proandroiddev.com/improving-android-databinding-with-bindables-library-cf4b0874d56b"><img alt="Medium" src="https://skydoves.github.io/badges/Story-Medium.svg"/></a>
   <a href="https://skydoves.github.io/libraries/bindables/html/bindables/com.skydoves.bindables/index.html"><img implealt="Dokka" src="https://skydoves.github.io/badges/javadoc-bindables.svg"/></a>
 </p>
 
