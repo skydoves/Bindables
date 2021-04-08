@@ -41,6 +41,9 @@ object BindingManager {
   /** Java Bean conventions for presenting a getter. */
   private const val JAVA_BEANS_GETTER: String = "get"
 
+  /** Java Bean conventions for presenting a setter. */
+  private const val JAVA_BEANS_SETTER: String = "set"
+
   /**
    * Binds the `BR` class into the [BindingManager].
    * This method only needs to be called once in the application.
@@ -89,10 +92,12 @@ object BindingManager {
     }
       ?: throw IllegalArgumentException("KFunction: ${function.name} must be annotated with the `@Bindable` annotation.")
     val functionName = bindingFunction.name.decapitalize(Locale.ENGLISH)
-    val bindingFunctionName = functionName
-      .takeIf { it.startsWith(JAVA_BEANS_GETTER) }
-      ?.replaceFirst(JAVA_BEANS_GETTER, String())
-      ?.decapitalize(Locale.ENGLISH) ?: functionName
+    val bindingFunctionName = when {
+      functionName.startsWith(JAVA_BEANS_GETTER) -> functionName.replaceFirst(JAVA_BEANS_GETTER, String())
+      functionName.startsWith(JAVA_BEANS_SETTER) -> functionName.replaceFirst(JAVA_BEANS_SETTER, String())
+      functionName.startsWith(JAVA_BEANS_BOOLEAN) -> functionName.replaceFirst(JAVA_BEANS_BOOLEAN, String())
+      else -> throw IllegalArgumentException("@Bindable associated with method must follow JavaBeans convention $functionName")
+    }.decapitalize(Locale.ENGLISH)
     return bindingFieldsMap[bindingFunctionName] ?: BR._all
   }
 }

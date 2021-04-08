@@ -35,7 +35,7 @@ class BindingInitProvider : ContentProvider() {
     if (fieldSize <= MIN_FIELD_SIZE) {
       Log.i(TAG, "BindingManager initialization successful, but there is no `@Bindable` field.")
     } else {
-      Log.i(TAG, "BindingManager initialization successful.")
+      Log.i(TAG, "BindingManager initialization successful. Size: $fieldSize")
     }
     return false
   }
