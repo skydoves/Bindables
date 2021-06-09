@@ -67,4 +67,13 @@ abstract class BindingFragmentActivity<T : ViewDataBinding> constructor(
       binding.notifyChange()
     }
   }
+
+  /**
+   * Removes binding listeners to expression variables and destroys the [binding] backing property for preventing
+   * leaking the [ViewDataBinding] that references the Context.
+   */
+  override fun onDestroy() {
+    super.onDestroy()
+    binding.unbind()
+  }
 }
