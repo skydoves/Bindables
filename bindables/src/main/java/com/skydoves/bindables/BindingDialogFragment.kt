@@ -16,6 +16,7 @@
 
 package com.skydoves.bindables
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -66,6 +67,13 @@ abstract class BindingDialogFragment<T : ViewDataBinding> constructor(
   @BindingOnly
   protected inline fun binding(block: T.() -> Unit): T {
     return binding.apply(block)
+  }
+
+  @CallSuper
+  @Suppress("UNREACHABLE_CODE")
+  override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+    return super.onCreateDialog(savedInstanceState)
+    _binding = DataBindingUtil.inflate(LayoutInflater.from(context), contentLayoutId, null, false, bindingComponent)
   }
 
   /**
