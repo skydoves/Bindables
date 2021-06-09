@@ -86,6 +86,7 @@ abstract class BindingBottomSheetDialogFragment<T : ViewDataBinding> constructor
    */
   override fun onDestroyView() {
     super.onDestroyView()
+    _binding?.unbind()
     _binding = null
   }
 }

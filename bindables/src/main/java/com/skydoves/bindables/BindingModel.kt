@@ -112,4 +112,14 @@ abstract class BindingModel : BindingObservable {
       propertyCallbacks.notifyCallbacks(this, BR._all, null)
     }
   }
+
+  /**
+   * Clears all binding properties from the callback registry.
+   */
+  override fun clearAllProperties() {
+    synchronized(lock) lock@{
+      val propertyCallbacks = propertyCallbacks ?: return@lock
+      propertyCallbacks.clear()
+    }
+  }
 }
