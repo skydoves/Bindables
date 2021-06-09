@@ -69,6 +69,9 @@ abstract class BindingDialogFragment<T : ViewDataBinding> constructor(
     return binding.apply(block)
   }
 
+  /**
+   * Ensures the [binding] property should be executed and provide the inflated view which depends on [contentLayoutId].
+   */
   @CallSuper
   @Suppress("UNREACHABLE_CODE")
   override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
