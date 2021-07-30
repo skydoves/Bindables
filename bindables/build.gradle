@@ -29,6 +29,7 @@ android {
         targetSdkVersion versions.compileSdk
         versionCode versions.versionCode
         versionName versions.versionName
+        consumerProguardFiles "consumer-rules.pro"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
