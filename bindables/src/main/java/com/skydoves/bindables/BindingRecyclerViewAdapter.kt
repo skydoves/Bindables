@@ -29,7 +29,8 @@ import kotlin.reflect.KProperty
  * We can register an observable property using [androidx.databinding.Bindable] annotation and
  * [bindingProperty] delegates. The getter for an observable property should be annotated with [androidx.databinding.Bindable].
  */
-public abstract class BindingRecyclerViewAdapter<T : RecyclerView.ViewHolder> : RecyclerView.Adapter<T>(), BindingObservable {
+public abstract class BindingRecyclerViewAdapter<T : RecyclerView.ViewHolder>
+  : RecyclerView.Adapter<T>(), BindingObservable {
 
   /** Synchronization registry lock. */
   private val lock: Any = Any()
@@ -72,7 +73,7 @@ public abstract class BindingRecyclerViewAdapter<T : RecyclerView.ViewHolder> : 
   override fun notifyPropertyChanged(property: KProperty<*>) {
     synchronized(lock) lock@{
       val propertyCallbacks = propertyCallbacks ?: return@lock
-      propertyCallbacks.notifyCallbacks(this, property.bindingId(), null)
+      propertyCallbacks.notifyCallbacks(this, property.bindingId, null)
     }
   }
 
@@ -86,7 +87,7 @@ public abstract class BindingRecyclerViewAdapter<T : RecyclerView.ViewHolder> : 
   override fun notifyPropertyChanged(function: KFunction<*>) {
     synchronized(lock) lock@{
       val propertyCallbacks = propertyCallbacks ?: return@lock
-      propertyCallbacks.notifyCallbacks(this, function.bindingId(), null)
+      propertyCallbacks.notifyCallbacks(this, function.bindingId, null)
     }
   }
 

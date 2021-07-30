@@ -49,7 +49,7 @@ public class BindingPropertyIdWithDefaultValue<T>(
   public operator fun setValue(bindingObservable: BindingObservable, property: KProperty<*>, value: T) {
     if (this.value != value) {
       this.value = value
-      bindingObservable.notifyPropertyChanged(property.bindingId())
+      bindingObservable.notifyPropertyChanged(property.bindingId)
     }
   }
 }
@@ -86,6 +86,6 @@ public class SavedStateHandleBindingProperty<T>(
 
   public operator fun setValue(bindingObservable: BindingObservable, property: KProperty<*>, value: T?) {
     savedStateHandle.set(key, value)
-    bindingObservable.notifyPropertyChanged(property.bindingId())
+    bindingObservable.notifyPropertyChanged(property.bindingId)
   }
 }
