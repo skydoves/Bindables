@@ -71,10 +71,8 @@ public fun <T : ViewDataBinding> ViewGroup.binding(
  *
  * @return A binding resource ID.
  */
-@JvmSynthetic
-internal fun KProperty<*>.bindingId(): Int {
-  return BindingManager.getBindingIdByProperty(this)
-}
+internal inline val KProperty<*>.bindingId: Int
+  @JvmSynthetic get() = BindingManager.getBindingIdByProperty(this)
 
 /**
  * @author skydoves (Jaewoong Eum)
@@ -83,7 +81,5 @@ internal fun KProperty<*>.bindingId(): Int {
  *
  * @return A binding resource ID.
  */
-@JvmSynthetic
-internal fun KFunction<*>.bindingId(): Int {
-  return BindingManager.getBindingIdByFunction(this)
-}
+internal inline val KFunction<*>.bindingId: Int
+  @JvmSynthetic get() = BindingManager.getBindingIdByFunction(this)

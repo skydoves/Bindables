@@ -160,7 +160,7 @@ public class StateFlowBindingPropertyId<T> constructor(
 ) {
 
   public operator fun provideDelegate(bindingViewModel: BindingViewModel, property: KProperty<*>): Delegate<T> {
-    val delegate = Delegate(stateFlow, property.bindingId())
+    val delegate = Delegate(stateFlow, property.bindingId)
     delegate.collect(bindingViewModel)
     return delegate
   }
@@ -209,7 +209,7 @@ public class StateFlowBindingPropertyIdOnScope<T> constructor(
 ) {
 
   public operator fun provideDelegate(bindingObservable: BindingObservable, property: KProperty<*>): Delegate<T> {
-    val delegate = Delegate(stateFlow, coroutineScope, property.bindingId())
+    val delegate = Delegate(stateFlow, coroutineScope, property.bindingId)
     delegate.collect(bindingObservable)
     return delegate
   }

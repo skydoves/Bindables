@@ -71,7 +71,7 @@ public abstract class BindingModel : BindingObservable {
   override fun notifyPropertyChanged(property: KProperty<*>) {
     synchronized(lock) lock@{
       val propertyCallbacks = propertyCallbacks ?: return@lock
-      propertyCallbacks.notifyCallbacks(this, property.bindingId(), null)
+      propertyCallbacks.notifyCallbacks(this, property.bindingId, null)
     }
   }
 
@@ -85,7 +85,7 @@ public abstract class BindingModel : BindingObservable {
   override fun notifyPropertyChanged(function: KFunction<*>) {
     synchronized(lock) lock@{
       val propertyCallbacks = propertyCallbacks ?: return@lock
-      propertyCallbacks.notifyCallbacks(this, function.bindingId(), null)
+      propertyCallbacks.notifyCallbacks(this, function.bindingId, null)
     }
   }
 

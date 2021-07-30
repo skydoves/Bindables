@@ -87,7 +87,7 @@ public abstract class BindingListAdapter<T, VH : RecyclerView.ViewHolder> constr
   override fun notifyPropertyChanged(property: KProperty<*>) {
     synchronized(lock) lock@{
       val propertyCallbacks = propertyCallbacks ?: return@lock
-      propertyCallbacks.notifyCallbacks(this, property.bindingId(), null)
+      propertyCallbacks.notifyCallbacks(this, property.bindingId, null)
     }
   }
 
@@ -101,7 +101,7 @@ public abstract class BindingListAdapter<T, VH : RecyclerView.ViewHolder> constr
   override fun notifyPropertyChanged(function: KFunction<*>) {
     synchronized(lock) lock@{
       val propertyCallbacks = propertyCallbacks ?: return@lock
-      propertyCallbacks.notifyCallbacks(this, function.bindingId(), null)
+      propertyCallbacks.notifyCallbacks(this, function.bindingId, null)
     }
   }
 
