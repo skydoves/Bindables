@@ -56,7 +56,7 @@ public fun <T : ViewDataBinding> ViewGroup.binding(
  * @return T A DataBinding class that inflated using the [layoutRes].
  */
 @BindingOnly
-public fun <T : ViewDataBinding> ViewGroup.binding(
+public inline fun <T : ViewDataBinding> ViewGroup.binding(
   @LayoutRes layoutRes: Int,
   attachToParent: Boolean = false,
   block: T.() -> Unit
