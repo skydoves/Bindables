@@ -41,7 +41,7 @@ allprojects {
 And add a dependency code to your **module**'s `build.gradle` file.
 ```gradle
 dependencies {
-    implementation "com.github.skydoves:bindables:1.0.8"
+    implementation "com.github.skydoves:bindables:1.0.9"
 }
 ```
 
@@ -79,7 +79,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-   binding.vm = viewModel // we can access a `binding` propety.
+   binding.vm = viewModel // we can access a `binding` property.
 
   // Base classes provide `binding` scope that has a receiver of the binding property.
   // So we don't need to use `with (binding) ...` block anymore.
