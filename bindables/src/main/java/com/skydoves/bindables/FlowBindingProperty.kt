@@ -40,7 +40,7 @@ import kotlin.reflect.KProperty
  * @return A flow delegation property [FlowBindingPropertyIdWithDefaultValue].
  */
 @BindingPropertyDelegate
-fun <T> Flow<T>.asBindingProperty(defaultValue: T) =
+public fun <T> Flow<T>.asBindingProperty(defaultValue: T): FlowBindingPropertyIdWithDefaultValue<T> =
   FlowBindingPropertyIdWithDefaultValue(this, defaultValue)
 
 /**
@@ -51,19 +51,19 @@ fun <T> Flow<T>.asBindingProperty(defaultValue: T) =
  * @param flow A flow for providing data.
  * @param defaultValue A default value for initializing the property value before flow emitting.
  */
-class FlowBindingPropertyIdWithDefaultValue<T> constructor(
+public class FlowBindingPropertyIdWithDefaultValue<T> constructor(
   private val flow: Flow<T>,
   private val defaultValue: T
 ) {
-  operator fun provideDelegate(bindingViewModel: BindingViewModel, property: KProperty<*>): Delegate<T> {
+  public operator fun provideDelegate(bindingViewModel: BindingViewModel, property: KProperty<*>): Delegate<T> {
     val bindingId = BindingManager.getBindingIdByProperty(property)
     val delegate = Delegate(defaultValue, bindingId)
     delegate.collect(flow, bindingViewModel)
     return delegate
   }
 
-  class Delegate<T>(private var value: T, private val bindingId: Int) {
-    fun collect(flow: Flow<T>, bindingViewModel: BindingViewModel) {
+  public class Delegate<T>(private var value: T, private val bindingId: Int) {
+    public fun collect(flow: Flow<T>, bindingViewModel: BindingViewModel) {
       bindingViewModel.viewModelScope.launch {
         flow.distinctUntilChanged().collect {
           value = it
@@ -72,7 +72,7 @@ class FlowBindingPropertyIdWithDefaultValue<T> constructor(
       }
     }
 
-    operator fun getValue(thisRef: Any, property: KProperty<*>): T = value
+    public operator fun getValue(thisRef: Any, property: KProperty<*>): T = value
   }
 }
 
@@ -91,7 +91,7 @@ class FlowBindingPropertyIdWithDefaultValue<T> constructor(
  * @return A flow delegation property [FlowBindingPropertyIdWithDefaultValue].
  */
 @BindingPropertyDelegate
-fun <T> Flow<T>.asBindingProperty(coroutineScope: CoroutineScope, defaultValue: T) =
+public fun <T> Flow<T>.asBindingProperty(coroutineScope: CoroutineScope, defaultValue: T): FlowBindingPropertyIdWithDefaultValueOnScope<T> =
   FlowBindingPropertyIdWithDefaultValueOnScope(this, coroutineScope, defaultValue)
 
 /**
@@ -103,24 +103,24 @@ fun <T> Flow<T>.asBindingProperty(coroutineScope: CoroutineScope, defaultValue: 
  * @param coroutineScope A [CoroutineScope] where the collecting should be lunched.
  * @param defaultValue A default value for initializing the property value before flow emitting.
  */
-class FlowBindingPropertyIdWithDefaultValueOnScope<T> constructor(
+public class FlowBindingPropertyIdWithDefaultValueOnScope<T> constructor(
   private val flow: Flow<T>,
   private val coroutineScope: CoroutineScope,
   private val defaultValue: T
 ) {
-  operator fun provideDelegate(bindingObservable: BindingObservable, property: KProperty<*>): Delegate<T> {
+  public operator fun provideDelegate(bindingObservable: BindingObservable, property: KProperty<*>): Delegate<T> {
     val bindingId = BindingManager.getBindingIdByProperty(property)
     val delegate = Delegate(defaultValue, coroutineScope, bindingId)
     delegate.collect(flow, bindingObservable)
     return delegate
   }
 
-  class Delegate<T>(
+  public class Delegate<T>(
     private var value: T,
     private val coroutineScope: CoroutineScope,
     private val bindingId: Int
   ) {
-    fun collect(flow: Flow<T>, bindingObservable: BindingObservable) {
+    public fun collect(flow: Flow<T>, bindingObservable: BindingObservable) {
       coroutineScope.launch {
         flow.distinctUntilChanged().collect {
           value = it
@@ -129,7 +129,7 @@ class FlowBindingPropertyIdWithDefaultValueOnScope<T> constructor(
       }
     }
 
-    operator fun getValue(thisRef: Any, property: KProperty<*>): T = value
+    public operator fun getValue(thisRef: Any, property: KProperty<*>): T = value
   }
 }
 
@@ -145,7 +145,7 @@ class FlowBindingPropertyIdWithDefaultValueOnScope<T> constructor(
  * @return A flow delegation property [StateFlowBindingPropertyId].
  */
 @BindingPropertyDelegate
-fun <T> StateFlow<T>.asBindingProperty() =
+public fun <T> StateFlow<T>.asBindingProperty(): StateFlowBindingPropertyId<T> =
   StateFlowBindingPropertyId(this)
 
 /**
@@ -155,18 +155,18 @@ fun <T> StateFlow<T>.asBindingProperty() =
  *
  * @param stateFlow A state flow for providing data.
  */
-class StateFlowBindingPropertyId<T> constructor(
+public class StateFlowBindingPropertyId<T> constructor(
   private val stateFlow: StateFlow<T>,
 ) {
 
-  operator fun provideDelegate(bindingViewModel: BindingViewModel, property: KProperty<*>): Delegate<T> {
+  public operator fun provideDelegate(bindingViewModel: BindingViewModel, property: KProperty<*>): Delegate<T> {
     val delegate = Delegate(stateFlow, property.bindingId())
     delegate.collect(bindingViewModel)
     return delegate
   }
 
-  class Delegate<T>(private val stateFlow: StateFlow<T>, private val bindingId: Int) {
-    fun collect(bindingViewModel: BindingViewModel) {
+  public class Delegate<T>(private val stateFlow: StateFlow<T>, private val bindingId: Int) {
+    public fun collect(bindingViewModel: BindingViewModel) {
       bindingViewModel.viewModelScope.launch {
         stateFlow.collect {
           bindingViewModel.notifyPropertyChanged(bindingId)
@@ -174,7 +174,7 @@ class StateFlowBindingPropertyId<T> constructor(
       }
     }
 
-    operator fun getValue(thisRef: Any, property: KProperty<*>): T = stateFlow.value
+    public operator fun getValue(thisRef: Any, property: KProperty<*>): T = stateFlow.value
   }
 }
 
@@ -192,7 +192,7 @@ class StateFlowBindingPropertyId<T> constructor(
  * @return A flow delegation property [StateFlowBindingPropertyId].
  */
 @BindingPropertyDelegate
-fun <T> StateFlow<T>.asBindingProperty(coroutineScope: CoroutineScope) =
+public fun <T> StateFlow<T>.asBindingProperty(coroutineScope: CoroutineScope): StateFlowBindingPropertyIdOnScope<T> =
   StateFlowBindingPropertyIdOnScope(coroutineScope, this)
 
 /**
@@ -203,23 +203,23 @@ fun <T> StateFlow<T>.asBindingProperty(coroutineScope: CoroutineScope) =
  * @param coroutineScope A [CoroutineScope] where the collecting should be lunched.
  * @param stateFlow A state flow for providing data.
  */
-class StateFlowBindingPropertyIdOnScope<T> constructor(
+public class StateFlowBindingPropertyIdOnScope<T> constructor(
   private val coroutineScope: CoroutineScope,
   private val stateFlow: StateFlow<T>,
 ) {
 
-  operator fun provideDelegate(bindingObservable: BindingObservable, property: KProperty<*>): Delegate<T> {
+  public operator fun provideDelegate(bindingObservable: BindingObservable, property: KProperty<*>): Delegate<T> {
     val delegate = Delegate(stateFlow, coroutineScope, property.bindingId())
     delegate.collect(bindingObservable)
     return delegate
   }
 
-  class Delegate<T>(
+  public class Delegate<T>(
     private val stateFlow: StateFlow<T>,
     private val coroutineScope: CoroutineScope,
     private val bindingId: Int
   ) {
-    fun collect(bindingObservable: BindingObservable) {
+    public fun collect(bindingObservable: BindingObservable) {
       coroutineScope.launch {
         stateFlow.collect {
           bindingObservable.notifyPropertyChanged(bindingId)
@@ -227,6 +227,6 @@ class StateFlowBindingPropertyIdOnScope<T> constructor(
       }
     }
 
-    operator fun getValue(thisRef: Any, property: KProperty<*>): T = stateFlow.value
+    public operator fun getValue(thisRef: Any, property: KProperty<*>): T = stateFlow.value
   }
 }

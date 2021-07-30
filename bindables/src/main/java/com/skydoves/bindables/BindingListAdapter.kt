@@ -32,8 +32,8 @@ import kotlin.reflect.KProperty
  * We can register an observable property using [androidx.databinding.Bindable] annotation and
  * [bindingProperty] delegates. The getter for an observable property should be annotated with [androidx.databinding.Bindable].
  */
-abstract class BindingListAdapter<T, VH : RecyclerView.ViewHolder> constructor(
-  val callback: DiffUtil.ItemCallback<T>
+public abstract class BindingListAdapter<T, VH : RecyclerView.ViewHolder> constructor(
+  public val callback: DiffUtil.ItemCallback<T>
 ) : ListAdapter<T, VH>(callback), BindingObservable {
 
   /** Synchronization registry lock. */
@@ -41,7 +41,7 @@ abstract class BindingListAdapter<T, VH : RecyclerView.ViewHolder> constructor(
 
   /** A bindable property that indicates an item list has been submitted. */
   @get:Bindable
-  var isSubmitted: Boolean = false
+  public var isSubmitted: Boolean = false
     private set(value) {
       if (field != value) {
         field = value

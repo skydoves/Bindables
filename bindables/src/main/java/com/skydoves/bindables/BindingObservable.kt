@@ -28,7 +28,7 @@ import kotlin.reflect.KProperty
  * This interface should be used with [PropertyChangeRegistry] and [androidx.databinding.Bindable] annotation
  * that can be applied to any getter accessor method of an [androidx.databinding.Observable].
  */
-interface BindingObservable : Observable {
+public interface BindingObservable : Observable {
   /**
    * Notifies a specific property has changed that matches in [PropertyChangeRegistry].
    * This function receives a [androidx.databinding.Bindable] property and if there is a change notification of any of the
@@ -36,7 +36,7 @@ interface BindingObservable : Observable {
    *
    * @param property A [androidx.databinding.Bindable] property that should be changed.
    */
-  fun notifyPropertyChanged(property: KProperty<*>)
+  public fun notifyPropertyChanged(property: KProperty<*>)
 
   /**
    * Notifies a specific property has changed that matches in [PropertyChangeRegistry].
@@ -45,7 +45,7 @@ interface BindingObservable : Observable {
    *
    * @param function A [androidx.databinding.Bindable] function that should be changed.
    */
-  fun notifyPropertyChanged(function: KFunction<*>)
+  public fun notifyPropertyChanged(function: KFunction<*>)
 
   /**
    * Notifies a specific property has changed that matches in [PropertyChangeRegistry].
@@ -54,15 +54,15 @@ interface BindingObservable : Observable {
    *
    * @param bindingId A specific data-binding id (generated BR id) that should be changed.
    */
-  fun notifyPropertyChanged(bindingId: Int)
+  public fun notifyPropertyChanged(bindingId: Int)
 
   /**
    * Notifies listeners that all properties of this instance have changed.
    */
-  fun notifyAllPropertiesChanged()
+  public fun notifyAllPropertiesChanged()
 
   /**
    * Clears all binding properties from the callback registry.
    */
-  fun clearAllProperties()
+  public fun clearAllProperties()
 }
