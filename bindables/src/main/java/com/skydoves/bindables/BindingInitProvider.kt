@@ -28,7 +28,7 @@ import android.util.Log
  * A binding initialization provider for binding `@Bindable` properties when an application is started.
  * This initialization provider will be registered on the application as a content provider.
  */
-class BindingInitProvider : ContentProvider() {
+public class BindingInitProvider : ContentProvider() {
 
   override fun onCreate(): Boolean {
     val fieldSize = BindingManager.bind<BR>()
@@ -46,7 +46,7 @@ class BindingInitProvider : ContentProvider() {
   override fun update(uri: Uri, values: ContentValues?, selection: String?, selectionArgs: Array<out String>?): Int = 0
   override fun query(uri: Uri, projection: Array<out String>?, selection: String?, selectionArgs: Array<out String>?, sortOrder: String?): Cursor? = null
 
-  companion object {
+  internal companion object {
     private const val TAG = "BindingInitProvider"
     private const val MIN_FIELD_SIZE = 1
   }

@@ -44,16 +44,8 @@ android {
     }
 }
 
-kotlin {
-    explicitApi()
-}
-
-dokkaHtml.configure {
-    dokkaSourceSets {
-        named("main") {
-            noAndroidSdkLink.set(false)
-        }
-    }
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions.freeCompilerArgs += ["-Xexplicit-api=strict"]
 }
 
 dependencies {
