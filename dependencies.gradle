@@ -15,7 +15,7 @@
 ext.versions = [
     minSdk           : 16,
     minSdkDemo       : 21,
-    compileSdk       : 30,
+    compileSdk       : 31,
     versionCode      : 10,
     versionName      : '1.0.9',
 
@@ -23,6 +23,7 @@ ext.versions = [
     spotlessGradle   : '5.14.0',
     ktlintGradle     : '0.41.0',
     dokkaGradle      : '1.4.32',
+    binaryValidator  : '0.7.1',
     mavenPublish     : '0.15.1',
 
     kotlin           : '1.5.10',
