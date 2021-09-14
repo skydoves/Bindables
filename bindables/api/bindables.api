@@ -1,0 +1,233 @@
+public abstract interface class androidx/databinding/DataBindingComponent {
+}
+
+public class androidx/databinding/library/baseAdapters/BR {
+	public static field _all I
+	public static field submitted I
+	public fun <init> ()V
+}
+
+public class com/skydoves/bindables/BR {
+	public static field _all I
+	public static field submitted I
+	public fun <init> ()V
+}
+
+public abstract class com/skydoves/bindables/BindingActivity : androidx/appcompat/app/AppCompatActivity {
+	public fun <init> (I)V
+	protected final fun binding (Lkotlin/jvm/functions/Function1;)Landroidx/databinding/ViewDataBinding;
+	protected final fun getBinding ()Landroidx/databinding/ViewDataBinding;
+	protected final fun getBindingComponent ()Landroidx/databinding/DataBindingComponent;
+	protected fun onDestroy ()V
+	protected final fun setBindingComponent (Landroidx/databinding/DataBindingComponent;)V
+}
+
+public abstract class com/skydoves/bindables/BindingBottomSheetDialogFragment : com/google/android/material/bottomsheet/BottomSheetDialogFragment {
+	public fun <init> (I)V
+	protected final fun binding (Lkotlin/jvm/functions/Function1;)Landroidx/databinding/ViewDataBinding;
+	protected final fun getBinding ()Landroidx/databinding/ViewDataBinding;
+	protected final fun getBindingComponent ()Landroidx/databinding/DataBindingComponent;
+	public fun onCreateView (Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;
+	public fun onDestroyView ()V
+	protected final fun setBindingComponent (Landroidx/databinding/DataBindingComponent;)V
+}
+
+public abstract class com/skydoves/bindables/BindingComponentActivity : androidx/activity/ComponentActivity {
+	public fun <init> (I)V
+	protected final fun binding (Lkotlin/jvm/functions/Function1;)Landroidx/databinding/ViewDataBinding;
+	protected final fun getBinding ()Landroidx/databinding/ViewDataBinding;
+	protected final fun getBindingComponent ()Landroidx/databinding/DataBindingComponent;
+	protected fun onDestroy ()V
+	protected final fun setBindingComponent (Landroidx/databinding/DataBindingComponent;)V
+}
+
+public abstract class com/skydoves/bindables/BindingDialogFragment : androidx/fragment/app/DialogFragment {
+	public fun <init> (I)V
+	protected final fun binding (Lkotlin/jvm/functions/Function1;)Landroidx/databinding/ViewDataBinding;
+	protected final fun getBinding ()Landroidx/databinding/ViewDataBinding;
+	protected final fun getBindingComponent ()Landroidx/databinding/DataBindingComponent;
+	public fun onCreateView (Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;
+	public fun onDestroyView ()V
+	protected final fun setBindingComponent (Landroidx/databinding/DataBindingComponent;)V
+}
+
+public final class com/skydoves/bindables/BindingExtensionsKt {
+	public static final fun binding (Landroid/view/ViewGroup;IZ)Landroidx/databinding/ViewDataBinding;
+	public static final fun binding (Landroid/view/ViewGroup;IZLkotlin/jvm/functions/Function1;)Landroidx/databinding/ViewDataBinding;
+	public static synthetic fun binding$default (Landroid/view/ViewGroup;IZILjava/lang/Object;)Landroidx/databinding/ViewDataBinding;
+	public static synthetic fun binding$default (Landroid/view/ViewGroup;IZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)Landroidx/databinding/ViewDataBinding;
+}
+
+public abstract class com/skydoves/bindables/BindingFragment : androidx/fragment/app/Fragment {
+	public fun <init> (I)V
+	protected final fun binding (Lkotlin/jvm/functions/Function1;)Landroidx/databinding/ViewDataBinding;
+	protected final fun getBinding ()Landroidx/databinding/ViewDataBinding;
+	protected final fun getBindingComponent ()Landroidx/databinding/DataBindingComponent;
+	public fun onCreateView (Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;
+	public fun onDestroyView ()V
+	protected final fun setBindingComponent (Landroidx/databinding/DataBindingComponent;)V
+}
+
+public abstract class com/skydoves/bindables/BindingFragmentActivity : androidx/fragment/app/FragmentActivity {
+	public fun <init> (I)V
+	protected final fun binding (Lkotlin/jvm/functions/Function1;)Landroidx/databinding/ViewDataBinding;
+	protected final fun getBinding ()Landroidx/databinding/ViewDataBinding;
+	protected final fun getBindingComponent ()Landroidx/databinding/DataBindingComponent;
+	protected fun onDestroy ()V
+	protected final fun setBindingComponent (Landroidx/databinding/DataBindingComponent;)V
+}
+
+public final class com/skydoves/bindables/BindingInitProvider : android/content/ContentProvider {
+	public fun <init> ()V
+	public fun delete (Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I
+	public fun getType (Landroid/net/Uri;)Ljava/lang/String;
+	public fun insert (Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+	public fun onCreate ()Z
+	public fun query (Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+	public fun update (Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+}
+
+public abstract class com/skydoves/bindables/BindingListAdapter : androidx/recyclerview/widget/ListAdapter, com/skydoves/bindables/BindingObservable {
+	public fun <init> (Landroidx/recyclerview/widget/DiffUtil$ItemCallback;)V
+	public fun addOnPropertyChangedCallback (Landroidx/databinding/Observable$OnPropertyChangedCallback;)V
+	public fun clearAllProperties ()V
+	public final fun getCallback ()Landroidx/recyclerview/widget/DiffUtil$ItemCallback;
+	public final fun isSubmitted ()Z
+	public fun notifyAllPropertiesChanged ()V
+	public fun notifyPropertyChanged (I)V
+	public fun notifyPropertyChanged (Lkotlin/reflect/KFunction;)V
+	public fun notifyPropertyChanged (Lkotlin/reflect/KProperty;)V
+	public fun onDetachedFromRecyclerView (Landroidx/recyclerview/widget/RecyclerView;)V
+	public fun removeOnPropertyChangedCallback (Landroidx/databinding/Observable$OnPropertyChangedCallback;)V
+	public fun submitList (Ljava/util/List;)V
+	public fun submitList (Ljava/util/List;Ljava/lang/Runnable;)V
+}
+
+public final class com/skydoves/bindables/BindingManager {
+	public static final field INSTANCE Lcom/skydoves/bindables/BindingManager;
+}
+
+public abstract class com/skydoves/bindables/BindingModel : com/skydoves/bindables/BindingObservable {
+	public fun <init> ()V
+	public fun addOnPropertyChangedCallback (Landroidx/databinding/Observable$OnPropertyChangedCallback;)V
+	public fun clearAllProperties ()V
+	public fun notifyAllPropertiesChanged ()V
+	public fun notifyPropertyChanged (I)V
+	public fun notifyPropertyChanged (Lkotlin/reflect/KFunction;)V
+	public fun notifyPropertyChanged (Lkotlin/reflect/KProperty;)V
+	public fun removeOnPropertyChangedCallback (Landroidx/databinding/Observable$OnPropertyChangedCallback;)V
+}
+
+public abstract interface class com/skydoves/bindables/BindingObservable : androidx/databinding/Observable {
+	public abstract fun clearAllProperties ()V
+	public abstract fun notifyAllPropertiesChanged ()V
+	public abstract fun notifyPropertyChanged (I)V
+	public abstract fun notifyPropertyChanged (Lkotlin/reflect/KFunction;)V
+	public abstract fun notifyPropertyChanged (Lkotlin/reflect/KProperty;)V
+}
+
+public final class com/skydoves/bindables/BindingPropertyIdWithDefaultValue {
+	public fun <init> (Ljava/lang/Object;)V
+	public final fun getValue (Lcom/skydoves/bindables/BindingObservable;Lkotlin/reflect/KProperty;)Ljava/lang/Object;
+	public final fun setValue (Lcom/skydoves/bindables/BindingObservable;Lkotlin/reflect/KProperty;Ljava/lang/Object;)V
+}
+
+public final class com/skydoves/bindables/BindingPropertyKt {
+	public static final fun asBindingProperty (Landroidx/lifecycle/SavedStateHandle;Ljava/lang/String;)Lcom/skydoves/bindables/SavedStateHandleBindingProperty;
+	public static final fun bindingProperty (Ljava/lang/Object;)Lcom/skydoves/bindables/BindingPropertyIdWithDefaultValue;
+}
+
+public abstract class com/skydoves/bindables/BindingRecyclerViewAdapter : androidx/recyclerview/widget/RecyclerView$Adapter, com/skydoves/bindables/BindingObservable {
+	public fun <init> ()V
+	public fun addOnPropertyChangedCallback (Landroidx/databinding/Observable$OnPropertyChangedCallback;)V
+	public fun clearAllProperties ()V
+	public fun notifyAllPropertiesChanged ()V
+	public fun notifyPropertyChanged (I)V
+	public fun notifyPropertyChanged (Lkotlin/reflect/KFunction;)V
+	public fun notifyPropertyChanged (Lkotlin/reflect/KProperty;)V
+	public fun onDetachedFromRecyclerView (Landroidx/recyclerview/widget/RecyclerView;)V
+	public fun removeOnPropertyChangedCallback (Landroidx/databinding/Observable$OnPropertyChangedCallback;)V
+}
+
+public abstract class com/skydoves/bindables/BindingViewModel : androidx/lifecycle/ViewModel, com/skydoves/bindables/BindingObservable {
+	public fun <init> ()V
+	public fun addOnPropertyChangedCallback (Landroidx/databinding/Observable$OnPropertyChangedCallback;)V
+	public fun clearAllProperties ()V
+	public fun notifyAllPropertiesChanged ()V
+	public fun notifyPropertyChanged (I)V
+	public fun notifyPropertyChanged (Lkotlin/reflect/KFunction;)V
+	public fun notifyPropertyChanged (Lkotlin/reflect/KProperty;)V
+	protected fun onCleared ()V
+	public fun removeOnPropertyChangedCallback (Landroidx/databinding/Observable$OnPropertyChangedCallback;)V
+}
+
+public class com/skydoves/bindables/DataBinderMapperImpl : androidx/databinding/DataBinderMapper {
+	public fun <init> ()V
+	public fun collectDependencies ()Ljava/util/List;
+	public fun convertBrIdToString (I)Ljava/lang/String;
+	public fun getDataBinder (Landroidx/databinding/DataBindingComponent;Landroid/view/View;I)Landroidx/databinding/ViewDataBinding;
+	public fun getDataBinder (Landroidx/databinding/DataBindingComponent;[Landroid/view/View;I)Landroidx/databinding/ViewDataBinding;
+	public fun getLayoutId (Ljava/lang/String;)I
+}
+
+public class com/skydoves/bindables/DataBindingTriggerClass {
+	public fun <init> ()V
+}
+
+public final class com/skydoves/bindables/FlowBindingPropertyIdWithDefaultValue {
+	public fun <init> (Lkotlinx/coroutines/flow/Flow;Ljava/lang/Object;)V
+	public final fun provideDelegate (Lcom/skydoves/bindables/BindingViewModel;Lkotlin/reflect/KProperty;)Lcom/skydoves/bindables/FlowBindingPropertyIdWithDefaultValue$Delegate;
+}
+
+public final class com/skydoves/bindables/FlowBindingPropertyIdWithDefaultValue$Delegate {
+	public fun <init> (Ljava/lang/Object;I)V
+	public final fun collect (Lkotlinx/coroutines/flow/Flow;Lcom/skydoves/bindables/BindingViewModel;)V
+	public final fun getValue (Ljava/lang/Object;Lkotlin/reflect/KProperty;)Ljava/lang/Object;
+}
+
+public final class com/skydoves/bindables/FlowBindingPropertyIdWithDefaultValueOnScope {
+	public fun <init> (Lkotlinx/coroutines/flow/Flow;Lkotlinx/coroutines/CoroutineScope;Ljava/lang/Object;)V
+	public final fun provideDelegate (Lcom/skydoves/bindables/BindingObservable;Lkotlin/reflect/KProperty;)Lcom/skydoves/bindables/FlowBindingPropertyIdWithDefaultValueOnScope$Delegate;
+}
+
+public final class com/skydoves/bindables/FlowBindingPropertyIdWithDefaultValueOnScope$Delegate {
+	public fun <init> (Ljava/lang/Object;Lkotlinx/coroutines/CoroutineScope;I)V
+	public final fun collect (Lkotlinx/coroutines/flow/Flow;Lcom/skydoves/bindables/BindingObservable;)V
+	public final fun getValue (Ljava/lang/Object;Lkotlin/reflect/KProperty;)Ljava/lang/Object;
+}
+
+public final class com/skydoves/bindables/FlowBindingPropertyKt {
+	public static final fun asBindingProperty (Lkotlinx/coroutines/flow/Flow;Ljava/lang/Object;)Lcom/skydoves/bindables/FlowBindingPropertyIdWithDefaultValue;
+	public static final fun asBindingProperty (Lkotlinx/coroutines/flow/Flow;Lkotlinx/coroutines/CoroutineScope;Ljava/lang/Object;)Lcom/skydoves/bindables/FlowBindingPropertyIdWithDefaultValueOnScope;
+	public static final fun asBindingProperty (Lkotlinx/coroutines/flow/StateFlow;)Lcom/skydoves/bindables/StateFlowBindingPropertyId;
+	public static final fun asBindingProperty (Lkotlinx/coroutines/flow/StateFlow;Lkotlinx/coroutines/CoroutineScope;)Lcom/skydoves/bindables/StateFlowBindingPropertyIdOnScope;
+}
+
+public final class com/skydoves/bindables/SavedStateHandleBindingProperty {
+	public fun <init> (Landroidx/lifecycle/SavedStateHandle;Ljava/lang/String;)V
+	public final fun getValue (Lcom/skydoves/bindables/BindingObservable;Lkotlin/reflect/KProperty;)Ljava/lang/Object;
+	public final fun setValue (Lcom/skydoves/bindables/BindingObservable;Lkotlin/reflect/KProperty;Ljava/lang/Object;)V
+}
+
+public final class com/skydoves/bindables/StateFlowBindingPropertyId {
+	public fun <init> (Lkotlinx/coroutines/flow/StateFlow;)V
+	public final fun provideDelegate (Lcom/skydoves/bindables/BindingViewModel;Lkotlin/reflect/KProperty;)Lcom/skydoves/bindables/StateFlowBindingPropertyId$Delegate;
+}
+
+public final class com/skydoves/bindables/StateFlowBindingPropertyId$Delegate {
+	public fun <init> (Lkotlinx/coroutines/flow/StateFlow;I)V
+	public final fun collect (Lcom/skydoves/bindables/BindingViewModel;)V
+	public final fun getValue (Ljava/lang/Object;Lkotlin/reflect/KProperty;)Ljava/lang/Object;
+}
+
+public final class com/skydoves/bindables/StateFlowBindingPropertyIdOnScope {
+	public fun <init> (Lkotlinx/coroutines/CoroutineScope;Lkotlinx/coroutines/flow/StateFlow;)V
+	public final fun provideDelegate (Lcom/skydoves/bindables/BindingObservable;Lkotlin/reflect/KProperty;)Lcom/skydoves/bindables/StateFlowBindingPropertyIdOnScope$Delegate;
+}
+
+public final class com/skydoves/bindables/StateFlowBindingPropertyIdOnScope$Delegate {
+	public fun <init> (Lkotlinx/coroutines/flow/StateFlow;Lkotlinx/coroutines/CoroutineScope;I)V
+	public final fun collect (Lcom/skydoves/bindables/BindingObservable;)V
+	public final fun getValue (Ljava/lang/Object;Lkotlin/reflect/KProperty;)Ljava/lang/Object;
+}
+
