@@ -73,11 +73,11 @@ public object BindingManager {
       it.getter.hasAnnotation<Bindable>()
     }
       ?: throw IllegalArgumentException("KProperty: ${property.name} must be annotated with the `@Bindable` annotation on the getter.")
-    val propertyName = bindingProperty.name.decapitalize(Locale.ENGLISH)
+    val propertyName = bindingProperty.name.replaceFirstChar { it.lowercase(Locale.ENGLISH) }
     val bindingPropertyName = propertyName
       .takeIf { it.startsWith(JAVA_BEANS_BOOLEAN) }
       ?.replaceFirst(JAVA_BEANS_BOOLEAN, String())
-      ?.decapitalize(Locale.ENGLISH) ?: propertyName
+      ?.replaceFirstChar { it.lowercase(Locale.ENGLISH) } ?: propertyName
     return bindingFieldsMap[bindingPropertyName] ?: BR._all
   }
 
@@ -91,13 +91,22 @@ public object BindingManager {
       it.hasAnnotation<Bindable>()
     }
       ?: throw IllegalArgumentException("KFunction: ${function.name} must be annotated with the `@Bindable` annotation.")
-    val functionName = bindingFunction.name.decapitalize(Locale.ENGLISH)
+    val functionName = bindingFunction.name.replaceFirstChar { it.lowercase(Locale.ENGLISH) }
     val bindingFunctionName = when {
-      functionName.startsWith(JAVA_BEANS_GETTER) -> functionName.replaceFirst(JAVA_BEANS_GETTER, String())
-      functionName.startsWith(JAVA_BEANS_SETTER) -> functionName.replaceFirst(JAVA_BEANS_SETTER, String())
-      functionName.startsWith(JAVA_BEANS_BOOLEAN) -> functionName.replaceFirst(JAVA_BEANS_BOOLEAN, String())
+      functionName.startsWith(JAVA_BEANS_GETTER) -> functionName.replaceFirst(
+        JAVA_BEANS_GETTER,
+        String()
+      )
+      functionName.startsWith(JAVA_BEANS_SETTER) -> functionName.replaceFirst(
+        JAVA_BEANS_SETTER,
+        String()
+      )
+      functionName.startsWith(JAVA_BEANS_BOOLEAN) -> functionName.replaceFirst(
+        JAVA_BEANS_BOOLEAN,
+        String()
+      )
       else -> throw IllegalArgumentException("@Bindable associated with method must follow JavaBeans convention $functionName")
-    }.decapitalize(Locale.ENGLISH)
+    }.replaceFirstChar { it.lowercase(Locale.ENGLISH) }
     return bindingFieldsMap[bindingFunctionName] ?: BR._all
   }
 }
