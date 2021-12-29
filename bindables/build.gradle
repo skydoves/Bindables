@@ -64,7 +64,6 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$versions.androidxAppcompat"
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycleVersion"
     api "androidx.lifecycle:lifecycle-viewmodel-savedstate:$versions.lifecycleVersion"
-    api "androidx.recyclerview:recyclerview:$versions.recyclerView"
 }
 
 apply plugin: "com.vanniktech.maven.publish"

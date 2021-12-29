@@ -20,22 +20,20 @@ ext.versions = [
     versionName      : '1.0.9',
 
     gradleBuildTool  : '7.0.2',
-    spotlessGradle   : '5.15.0',
+    spotlessGradle   : '6.1.0',
     ktlintGradle     : '0.41.0',
     dokkaGradle      : '1.4.32',
     binaryValidator  : '0.7.1',
     mavenPublish     : '0.15.1',
 
-    kotlin           : '1.5.10',
-    androidxAppcompat: '1.4.0-alpha03',
+    kotlin           : '1.5.32',
+    androidxAppcompat: '1.4.0',
     googleMaterial   : '1.4.0',
-    lifecycleVersion : '2.3.1',
-    recyclerView     : '1.2.1',
+    lifecycleVersion : '2.4.0',
 
     // for demo
-    constraintVersion: '2.0.4',
     fragmentVersion  : '1.2.5',
-    hiltCoreVersion  : '2.38.1',
+    hiltCoreVersion  : '2.40.5',
     hiltVersion      : '1.0.0',
     glideVersion     : '4.12.0',
     whatIfVersion    : '1.1.0',
