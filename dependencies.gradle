@@ -26,7 +26,7 @@ ext.versions = [
     binaryValidator  : '0.7.1',
     mavenPublish     : '0.15.1',
 
-    kotlin           : '1.5.10',
+    kotlin           : '1.5.32',
     androidxAppcompat: '1.4.0',
     googleMaterial   : '1.4.0',
     lifecycleVersion : '2.4.0',
