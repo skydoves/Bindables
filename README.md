@@ -11,8 +11,7 @@
 
 <p align="center">
 🧬 Android DataBinding kit for notifying data changes from Model layers to UI layers. <br>
-Bindables provides base classes of DataBinding (BindingActivity, BindingFragment, BindingViewModel), <br>
-and supports notifying data changes to UI layers without observable, reactive programming such as LiveData and StateFlow.
+You can notify data changes to UI layers without backing properties, reactive programming models such as **LiveData** and **StateFlow**.
 </p>
 
 <p align="center">
