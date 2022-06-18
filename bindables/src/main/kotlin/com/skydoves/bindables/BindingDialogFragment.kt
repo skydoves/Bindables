@@ -20,7 +20,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
@@ -71,13 +70,13 @@ public abstract class BindingDialogFragment<T : ViewDataBinding> constructor(
   /**
    * Ensures the [binding] property should be executed and provide the inflated view which depends on [contentLayoutId].
    */
-  @CallSuper
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    _binding = DataBindingUtil.inflate(inflater, contentLayoutId, container, false, bindingComponent)
+    _binding =
+      DataBindingUtil.inflate(inflater, contentLayoutId, container, false, bindingComponent)
     return binding.root
   }
 
