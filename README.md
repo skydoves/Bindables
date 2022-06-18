@@ -11,12 +11,12 @@
 
 <p align="center">
 🧬 Android DataBinding kit for notifying data changes from Model layers to UI layers. <br>
-This library provides base classes for DataBinding (BindingActivity, BindingFragment, BindingViewModel), <br>
-and support ways in which notifying data changes without observable fields and LiveData.
+Bindables provides base classes of DataBinding (BindingActivity, BindingFragment, BindingViewModel), <br>
+and supports notifying data changes to data layers without observable, reactive programming such as LiveData and StateFlow.
 </p>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/24237865/107942568-c1c82e80-6fce-11eb-8ab3-f8e9847a57fe.png" width="665" height="424"/>
+<img src="https://user-images.githubusercontent.com/24237865/174428741-624646ef-c501-4299-b2b3-e4940504b3b8.png"/>
 </p>
 
 ## UseCase
@@ -27,21 +27,13 @@ You can reference the good use cases of this library in the below repositories.
 - [TheMovies2](https://github.com/skydoves/TheMovies2) - 🎬 A demo project using The Movie DB based on Kotlin MVVM architecture and material design & animations.
 
 ## Download
-[![Maven Central](https://img.shields.io/maven-central/v/com.github.skydoves/bindables.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.skydoves%22%20AND%20a:%22bindables%22) [![Jitpack](https://jitpack.io/v/skydoves/bindables.svg)](https://jitpack.io/#skydoves/bindables)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.skydoves/bindables.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.skydoves%22%20AND%20a:%22bindables%22)
 
 ### Gradle
-Add below codes to your **root** `build.gradle` file (not your module build.gradle file).
-```gradle
-allprojects {
-    repositories {
-        mavenCentral()
-    }
-}
-```
-And add a dependency code to your **module**'s `build.gradle` file.
+Add the dependency below to your **module**'s `build.gradle` file:
 ```gradle
 dependencies {
-    implementation "com.github.skydoves:bindables:1.0.9"
+    implementation "com.github.skydoves:bindables:1.1.0"
 }
 ```
 
