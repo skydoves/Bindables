@@ -50,7 +50,6 @@ android {
     jvmTarget = '1.8'
   }
   buildFeatures {
-    buildConfig false
     dataBinding true
   }
 }
