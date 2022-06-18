@@ -13,58 +13,67 @@
 // * See the License for the specific language governing permissions and
 // * limitations under the License.
 // */
+
+import com.skydoves.bindables.Configuration
+import com.skydoves.bindables.Dependencies
+
 plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
-    id 'org.jetbrains.dokka'
-    id 'binary-compatibility-validator'
+  id 'com.android.library'
+  id 'kotlin-android'
+  id 'kotlin-kapt'
+  id 'org.jetbrains.dokka'
+  id 'binary-compatibility-validator'
 }
 
-apply from: "$rootDir/dependencies.gradle"
+ext {
+  PUBLISH_GROUP_ID = Configuration.artifactGroup
+  PUBLISH_ARTIFACT_ID = 'bindables'
+  PUBLISH_VERSION = rootVersionName
+}
+
+apply from: "${rootDir}/scripts/publish-module.gradle"
 
 android {
-    compileSdkVersion versions.compileSdk
-    defaultConfig {
-        minSdkVersion versions.minSdk
-        targetSdkVersion versions.compileSdk
-        versionCode versions.versionCode
-        versionName versions.versionName
-        consumerProguardFiles "consumer-rules.pro"
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-    buildFeatures {
-        buildConfig false
-        dataBinding true
-    }
+  compileSdkVersion Configuration.compileSdk
+  defaultConfig {
+    minSdkVersion Configuration.minSdk
+    targetSdkVersion Configuration.targetSdk
+    versionCode Configuration.versionCode
+    versionName Configuration.versionName
+    consumerProguardFiles "consumer-rules.pro"
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+  kotlinOptions {
+    jvmTarget = '1.8'
+  }
+  buildFeatures {
+    buildConfig false
+    dataBinding true
+  }
 }
 
 apiValidation {
-    ignoredPackages += [
-        "com/skydoves/bindables/databinding",
-    ]
-    nonPublicMarkers += [
-        "kotlin.PublishedApi",
-    ]
+  ignoredPackages += [
+    "com/skydoves/bindables/databinding",
+  ]
+  nonPublicMarkers += [
+    "kotlin.PublishedApi",
+  ]
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
-    kotlinOptions.freeCompilerArgs += ["-Xexplicit-api=strict"]
+  kotlinOptions.freeCompilerArgs += ["-Xexplicit-api=strict"]
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin"
-    implementation "com.google.android.material:material:$versions.googleMaterial"
-    implementation "androidx.appcompat:appcompat:$versions.androidxAppcompat"
-    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycleVersion"
-    api "androidx.lifecycle:lifecycle-viewmodel-savedstate:$versions.lifecycleVersion"
+  implementation Dependencies.kotlinReflect
+  implementation Dependencies.material
+  implementation Dependencies.appcompat
+  api Dependencies.viewModelKtx
+  api Dependencies.viewModelSavedState
 }
 
-apply plugin: "com.vanniktech.maven.publish"
-apply from: "$rootDir/spotless.gradle"
+apply from: "$rootDir/spotless/spotless.gradle"

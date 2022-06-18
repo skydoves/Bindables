@@ -13,52 +13,51 @@
 // * See the License for the specific language governing permissions and
 // * limitations under the License.
 // */
+
+import com.skydoves.bindables.Configuration
+import com.skydoves.bindables.Dependencies
+
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
-    id 'kotlin-parcelize'
-    id 'dagger.hilt.android.plugin'
+  id "com.android.application"
+  id "org.jetbrains.kotlin.android"
+  id "kotlin-kapt"
+  id "kotlin-parcelize"
+  id "dagger.hilt.android.plugin"
 }
 
 android {
-    compileSdkVersion versions.compileSdk
-    defaultConfig {
-        applicationId "com.skydoves.bindablesdemo"
-        minSdkVersion versions.minSdkDemo
-        targetSdkVersion versions.compileSdk
-        versionCode versions.versionCode
-        versionName versions.versionName
-    }
-    lintOptions {
-        abortOnError false
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-    buildFeatures {
-        dataBinding true
-    }
+  compileSdkVersion Configuration.compileSdk
+  defaultConfig {
+    applicationId "com.skydoves.bindablesdemo"
+    minSdkVersion Configuration.minSdk
+    targetSdkVersion Configuration.targetSdk
+    versionCode Configuration.versionCode
+    versionName Configuration.versionName
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  kotlinOptions {
+    jvmTarget = '1.8'
+  }
+
+  buildFeatures {
+    dataBinding true
+  }
 }
 
 dependencies {
-    implementation "com.google.android.material:material:$versions.googleMaterial"
-    implementation "androidx.fragment:fragment-ktx:$versions.fragmentVersion"
+  implementation project(":bindables")
 
-    implementation "com.github.bumptech.glide:glide:$versions.glideVersion"
-    kapt "com.github.bumptech.glide:compiler:$versions.glideVersion"
-
-    implementation "com.google.dagger:hilt-android:$versions.hiltCoreVersion"
-    kapt "com.google.dagger:hilt-compiler:$versions.hiltCoreVersion"
-    kapt "androidx.hilt:hilt-compiler:$versions.hiltVersion"
-
-    implementation "com.github.skydoves:whatif:$versions.whatIfVersion"
-
-    implementation project(":bindables")
+  implementation Dependencies.material
+  implementation Dependencies.fragment
+  implementation Dependencies.glide
+  implementation Dependencies.hilt
+  kapt Dependencies.hiltCompiler
+  implementation Dependencies.whatIf
 }
 
-apply from: "$rootDir/spotless.gradle"
+apply from: "$rootDir/spotless/spotless.gradle"
