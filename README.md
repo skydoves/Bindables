@@ -15,7 +15,7 @@ You can notify data changes to UI layers without backing properties, and reactiv
 </p>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/24237865/174428741-624646ef-c501-4299-b2b3-e4940504b3b8.png"/>
+<img src="https://user-images.githubusercontent.com/24237865/174429345-0295c71e-51cb-41e9-ac61-9615b45b9461.png" />
 </p>
 
 ## UseCase
