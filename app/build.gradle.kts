@@ -20,8 +20,8 @@ plugins {
   id(libs.plugins.android.application.get().pluginId)
   id(libs.plugins.kotlin.android.get().pluginId)
   id(libs.plugins.kotlin.parcelize.get().pluginId)
+  id(libs.plugins.kotlin.kapt.get().pluginId)
   id(libs.plugins.hilt.plugin.get().pluginId)
-  id(libs.plugins.ksp.get().pluginId)
 }
 
 android {
@@ -56,7 +56,7 @@ dependencies {
   implementation(libs.androidx.appcompat)
   implementation(libs.androidx.activity)
   implementation(libs.androidx.constraintlayout)
-  ksp(libs.hilt.compiler)
+  kapt(libs.hilt.compiler)
 
   implementation(libs.androidx.material)
   implementation(libs.androidx.fragment)
