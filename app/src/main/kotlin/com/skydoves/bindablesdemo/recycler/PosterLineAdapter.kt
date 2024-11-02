@@ -23,7 +23,9 @@ import com.skydoves.bindables.binding
 import com.skydoves.bindablesdemo.R
 import com.skydoves.bindablesdemo.databinding.ItemPosterLineBinding
 
-class PosterLineAdapter : BindingListAdapter<Poster, PosterLineAdapter.PosterViewHolder>(PosterDiffUtil()) {
+class PosterLineAdapter : BindingListAdapter<Poster, PosterLineAdapter.PosterViewHolder>(
+  PosterDiffUtil(),
+) {
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PosterViewHolder {
     val binding = parent.binding<ItemPosterLineBinding>(R.layout.item_poster_line)

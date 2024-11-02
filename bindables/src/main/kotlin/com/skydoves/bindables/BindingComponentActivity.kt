@@ -33,7 +33,7 @@ import androidx.databinding.ViewDataBinding
  * @property contentLayoutId A content layout Id for inflating as a content view.
  */
 public abstract class BindingComponentActivity<T : ViewDataBinding> constructor(
-  @LayoutRes private val contentLayoutId: Int
+  @LayoutRes private val contentLayoutId: Int,
 ) : ComponentActivity() {
 
   /** This interface is generated during compilation to contain getters for all used instance `BindingAdapters`. */

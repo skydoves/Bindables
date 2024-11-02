@@ -34,7 +34,7 @@ class RadioFragment : BindingFragment<FragmentRadioBinding>(R.layout.fragment_ra
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
-    savedInstanceState: Bundle?
+    savedInstanceState: Bundle?,
   ): View {
     super.onCreateView(inflater, container, savedInstanceState)
     return binding {

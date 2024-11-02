@@ -1,7 +1,7 @@
 package com.skydoves.bindables
 
 object Versions {
-  internal const val ANDROID_GRADLE_PLUGIN = "7.2.1"
+  internal const val ANDROID_GRADLE_PLUGIN = "8.7.1"
   internal const val ANDROID_GRADLE_SPOTLESS = "6.3.0"
   internal const val GRADLE_NEXUS_PUBLISH_PLUGIN = "1.1.0"
   internal const val KOTLIN = "1.7.0"

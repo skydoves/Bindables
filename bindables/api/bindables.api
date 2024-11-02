@@ -1,15 +1,18 @@
+public class androidx/databinding/DataBinderMapperImpl : androidx/databinding/MergedDataBinderMapper {
+}
+
 public abstract interface class androidx/databinding/DataBindingComponent {
 }
 
 public class androidx/databinding/library/baseAdapters/BR {
-	public static field _all I
-	public static field submitted I
+	public static final field _all I
+	public static final field submitted I
 	public fun <init> ()V
 }
 
 public class com/skydoves/bindables/BR {
-	public static field _all I
-	public static field submitted I
+	public static final field _all I
+	public static final field submitted I
 	public fun <init> ()V
 }
 

@@ -37,7 +37,7 @@ import androidx.fragment.app.DialogFragment
  * @property contentLayoutId A content layout Id for inflating as a content view.
  */
 public abstract class BindingDialogFragment<T : ViewDataBinding> constructor(
-  @LayoutRes private val contentLayoutId: Int
+  @LayoutRes private val contentLayoutId: Int,
 ) : DialogFragment() {
 
   /** This interface is generated during compilation to contain getters for all used instance `BindingAdapters`. */
@@ -53,7 +53,8 @@ public abstract class BindingDialogFragment<T : ViewDataBinding> constructor(
   @BindingOnly
   protected val binding: T
     get() = checkNotNull(_binding) {
-      "DialogFragment $this binding cannot be accessed before onCreateView() or after onDestroyView()"
+      "DialogFragment $this binding cannot be accessed before " +
+        "onCreateView() or after onDestroyView()"
     }
 
   /**
@@ -73,10 +74,12 @@ public abstract class BindingDialogFragment<T : ViewDataBinding> constructor(
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
-    savedInstanceState: Bundle?
+    savedInstanceState: Bundle?,
   ): View {
     _binding =
-      DataBindingUtil.inflate(inflater, contentLayoutId, container, false, bindingComponent)
+      DataBindingUtil.inflate(
+        inflater, contentLayoutId, container, false, bindingComponent,
+      )
     return binding.root
   }
 

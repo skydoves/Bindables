@@ -33,7 +33,7 @@ import kotlin.reflect.KProperty
  * [bindingProperty] delegates. The getter for an observable property should be annotated with [androidx.databinding.Bindable].
  */
 public abstract class BindingListAdapter<T, VH : RecyclerView.ViewHolder> constructor(
-  public val callback: DiffUtil.ItemCallback<T>
+  public val callback: DiffUtil.ItemCallback<T>,
 ) : ListAdapter<T, VH>(callback), BindingObservable {
 
   /** Synchronization registry lock. */

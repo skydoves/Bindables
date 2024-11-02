@@ -72,7 +72,10 @@ public object BindingManager {
     val bindingProperty = property.takeIf {
       it.getter.hasAnnotation<Bindable>()
     }
-      ?: throw IllegalArgumentException("KProperty: ${property.name} must be annotated with the `@Bindable` annotation on the getter.")
+      ?: throw IllegalArgumentException(
+        "KProperty: ${property.name} must be annotated " +
+          "with the `@Bindable` annotation on the getter.",
+      )
     val propertyName = bindingProperty.name.replaceFirstChar { it.lowercase(Locale.ENGLISH) }
     val bindingPropertyName = propertyName
       .takeIf { it.startsWith(JAVA_BEANS_BOOLEAN) }
@@ -90,22 +93,28 @@ public object BindingManager {
     val bindingFunction = function.takeIf {
       it.hasAnnotation<Bindable>()
     }
-      ?: throw IllegalArgumentException("KFunction: ${function.name} must be annotated with the `@Bindable` annotation.")
+      ?: throw IllegalArgumentException(
+        "KFunction: ${function.name} must be annotated " +
+          "with the `@Bindable` annotation.",
+      )
     val functionName = bindingFunction.name.replaceFirstChar { it.lowercase(Locale.ENGLISH) }
     val bindingFunctionName = when {
       functionName.startsWith(JAVA_BEANS_GETTER) -> functionName.replaceFirst(
         JAVA_BEANS_GETTER,
-        String()
+        String(),
       )
       functionName.startsWith(JAVA_BEANS_SETTER) -> functionName.replaceFirst(
         JAVA_BEANS_SETTER,
-        String()
+        String(),
       )
       functionName.startsWith(JAVA_BEANS_BOOLEAN) -> functionName.replaceFirst(
         JAVA_BEANS_BOOLEAN,
-        String()
+        String(),
       )
-      else -> throw IllegalArgumentException("@Bindable associated with method must follow JavaBeans convention $functionName")
+      else -> throw IllegalArgumentException(
+        "@Bindable associated with method " +
+          "must follow JavaBeans convention $functionName",
+      )
     }.replaceFirstChar { it.lowercase(Locale.ENGLISH) }
     return bindingFieldsMap[bindingFunctionName] ?: BR._all
   }
