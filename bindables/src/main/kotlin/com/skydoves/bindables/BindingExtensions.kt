@@ -37,10 +37,13 @@ import kotlin.reflect.KProperty
 @BindingOnly
 public fun <T : ViewDataBinding> ViewGroup.binding(
   @LayoutRes layoutRes: Int,
-  attachToParent: Boolean = false
+  attachToParent: Boolean = false,
 ): T {
   return DataBindingUtil.inflate(
-    LayoutInflater.from(context), layoutRes, this, attachToParent
+    LayoutInflater.from(context),
+    layoutRes,
+    this,
+    attachToParent,
   )
 }
 
@@ -59,7 +62,7 @@ public fun <T : ViewDataBinding> ViewGroup.binding(
 public inline fun <T : ViewDataBinding> ViewGroup.binding(
   @LayoutRes layoutRes: Int,
   attachToParent: Boolean = false,
-  block: T.() -> Unit
+  block: T.() -> Unit,
 ): T {
   return binding<T>(layoutRes, attachToParent).apply(block)
 }

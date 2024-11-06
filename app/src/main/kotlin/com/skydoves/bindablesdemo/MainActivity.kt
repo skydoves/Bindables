@@ -43,17 +43,17 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
           override fun onPageScrolled(
             position: Int,
             positionOffset: Float,
-            positionOffsetPixels: Int
+            positionOffsetPixels: Int,
           ) = Unit
 
           override fun onPageSelected(position: Int) {
             binding.mainBottomNavigation.menu.getItem(position).isChecked = true
           }
-        }
+        },
       )
     }
 
-    binding.mainBottomNavigation.setOnNavigationItemSelectedListener {
+    binding.mainBottomNavigation.setOnItemSelectedListener {
       when (it.itemId) {
         R.id.action_one -> binding.mainViewpager.currentItem = 0
         R.id.action_two -> binding.mainViewpager.currentItem = 1

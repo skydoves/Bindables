@@ -23,7 +23,9 @@ import com.skydoves.bindables.binding
 import com.skydoves.bindablesdemo.R
 import com.skydoves.bindablesdemo.databinding.ItemPosterCircleBinding
 
-class PosterCircleAdapter : BindingListAdapter<Poster, PosterCircleAdapter.PosterViewHolder>(PosterDiffUtil()) {
+class PosterCircleAdapter : BindingListAdapter<Poster, PosterCircleAdapter.PosterViewHolder>(
+  PosterDiffUtil(),
+) {
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PosterViewHolder {
     val binding = parent.binding<ItemPosterCircleBinding>(R.layout.item_poster_circle)

@@ -42,11 +42,18 @@ public fun <T> bindingProperty(defaultValue: T): BindingPropertyIdWithDefaultVal
  * @param value A default value should be initialized.
  */
 public class BindingPropertyIdWithDefaultValue<T>(
-  private var value: T
+  private var value: T,
 ) {
-  public operator fun getValue(bindingObservable: BindingObservable, property: KProperty<*>): T = value
+  public operator fun getValue(
+    bindingObservable: BindingObservable,
+    property: KProperty<*>,
+  ): T = value
 
-  public operator fun setValue(bindingObservable: BindingObservable, property: KProperty<*>, value: T) {
+  public operator fun setValue(
+    bindingObservable: BindingObservable,
+    property: KProperty<*>,
+    value: T,
+  ) {
     if (this.value != value) {
       this.value = value
       bindingObservable.notifyPropertyChanged(property.bindingId)
@@ -80,12 +87,17 @@ public fun <T> SavedStateHandle.asBindingProperty(key: String): SavedStateHandle
  */
 public class SavedStateHandleBindingProperty<T>(
   private val savedStateHandle: SavedStateHandle,
-  private var key: String
+  private var key: String,
 ) {
-  public operator fun getValue(bindingObservable: BindingObservable, property: KProperty<*>): T? = savedStateHandle.get<T?>(key)
+  public operator fun getValue(bindingObservable: BindingObservable, property: KProperty<*>): T? =
+    savedStateHandle[key]
 
-  public operator fun setValue(bindingObservable: BindingObservable, property: KProperty<*>, value: T?) {
-    savedStateHandle.set(key, value)
+  public operator fun setValue(
+    bindingObservable: BindingObservable,
+    property: KProperty<*>,
+    value: T?,
+  ) {
+    savedStateHandle[key] = value
     bindingObservable.notifyPropertyChanged(property.bindingId)
   }
 }

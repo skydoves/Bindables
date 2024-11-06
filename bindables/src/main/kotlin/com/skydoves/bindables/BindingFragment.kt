@@ -37,7 +37,7 @@ import androidx.fragment.app.Fragment
  * @property contentLayoutId A content layout Id for inflating as a content view.
  */
 public abstract class BindingFragment<T : ViewDataBinding> constructor(
-  @LayoutRes private val contentLayoutId: Int
+  @LayoutRes private val contentLayoutId: Int,
 ) : Fragment() {
 
   /** This interface is generated during compilation to contain getters for all used instance `BindingAdapters`. */
@@ -73,7 +73,7 @@ public abstract class BindingFragment<T : ViewDataBinding> constructor(
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
-    savedInstanceState: Bundle?
+    savedInstanceState: Bundle?,
   ): View {
     _binding =
       DataBindingUtil.inflate(inflater, contentLayoutId, container, false, bindingComponent)

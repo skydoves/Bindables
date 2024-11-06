@@ -17,8 +17,8 @@
 package com.skydoves.bindables
 
 object Configuration {
-  const val compileSdk = 32
-  const val targetSdk = 32
+  const val compileSdk = 35
+  const val targetSdk = 35
   const val minSdk = 21
   const val majorVersion = 1
   const val minorVersion = 1

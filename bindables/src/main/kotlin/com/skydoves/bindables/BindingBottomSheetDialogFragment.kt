@@ -37,7 +37,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
  * @property contentLayoutId A content layout Id for inflating as a content view.
  */
 public abstract class BindingBottomSheetDialogFragment<T : ViewDataBinding> constructor(
-  @LayoutRes private val contentLayoutId: Int
+  @LayoutRes private val contentLayoutId: Int,
 ) : BottomSheetDialogFragment() {
 
   /** This interface is generated during compilation to contain getters for all used instance `BindingAdapters`. */
@@ -53,7 +53,8 @@ public abstract class BindingBottomSheetDialogFragment<T : ViewDataBinding> cons
   @BindingOnly
   protected val binding: T
     get() = checkNotNull(_binding) {
-      "BottomSheetDialogFragment $this binding cannot be accessed before onCreateView() or after onDestroyView()"
+      "BottomSheetDialogFragment $this binding cannot be accessed before " +
+        "onCreateView() or after onDestroyView()"
     }
 
   /**
@@ -73,10 +74,12 @@ public abstract class BindingBottomSheetDialogFragment<T : ViewDataBinding> cons
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
-    savedInstanceState: Bundle?
+    savedInstanceState: Bundle?,
   ): View {
     _binding =
-      DataBindingUtil.inflate(inflater, contentLayoutId, container, false, bindingComponent)
+      DataBindingUtil.inflate(
+        inflater, contentLayoutId, container, false, bindingComponent,
+      )
     return binding.root
   }
 
