@@ -16,13 +16,17 @@
 
 package com.skydoves.bindablesdemo.recycler
 
+import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
 
 class PosterDiffUtil<T> : DiffUtil.ItemCallback<T>() {
 
-  override fun areItemsTheSame(oldItem: T, newItem: T): Boolean =
-    oldItem.hashCode() == newItem.hashCode()
+  override fun areItemsTheSame(oldItem: T & Any, newItem: T & Any): Boolean {
+    return oldItem.hashCode() == newItem.hashCode()
+  }
 
-  override fun areContentsTheSame(oldItem: T, newItem: T): Boolean =
-    oldItem.hashCode() == newItem.hashCode()
+  @SuppressLint("DiffUtilEquals")
+  override fun areContentsTheSame(oldItem: T & Any, newItem: T & Any): Boolean {
+    return oldItem == newItem
+  }
 }

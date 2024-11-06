@@ -47,7 +47,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
           ) = Unit
 
           override fun onPageSelected(position: Int) {
-            binding.mainBottomNavigation.menu.findItem(position).isChecked = true
+            binding.mainBottomNavigation.menu.getItem(position).isChecked = true
           }
         },
       )

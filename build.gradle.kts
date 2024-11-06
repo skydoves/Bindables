@@ -23,7 +23,7 @@ plugins {
   alias(libs.plugins.kotlin.binary.compatibility) apply false
   alias(libs.plugins.hilt.plugin) apply false
   alias(libs.plugins.nexus.plugin) apply false
-  alias(libs.plugins.kotlin.kapt)
+  alias(libs.plugins.kotlin.kapt) apply false
   alias(libs.plugins.spotless)
   alias(libs.plugins.dokka)
 }
